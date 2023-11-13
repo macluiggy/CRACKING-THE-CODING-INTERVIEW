@@ -1,0 +1,11 @@
+{
+  "name": "cracking-the-coding-interview",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
