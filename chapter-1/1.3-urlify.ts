@@ -26,16 +26,28 @@ function replaceSpaces(str: string, trueLength: number): string {
   }
 
   index = trueLength + spaceCount * 2;
+  // console.log(index);
+  
 
   let strArray = str.split("");
-  if (trueLength < str.length) strArray[trueLength] = "\0";
-
+  // console.log(strArray);
+  
+  if (trueLength < str.length) strArray[trueLength] = "\0"; // End array
+  // console.log(strArray);
+  
   for (i = trueLength - 1; i >= 0; i--) {
+    // console.log(strArray[i], i);
+    
     if (strArray[i] === " ") {
+      // console.log(strArray[i], i);
+      console.log(strArray[index - 1], strArray[index - 2], strArray[index - 3]);
+      
       strArray[index - 1] = "0";
       strArray[index - 2] = "2";
       strArray[index - 3] = "%";
       index = index - 3;
+      // console.log(strArray[index - 1], strArray[index - 2], strArray[index - 3]);
+      
     } else {
       strArray[index - 1] = strArray[i];
       index--;
@@ -43,7 +55,7 @@ function replaceSpaces(str: string, trueLength: number): string {
   }
 
   return strArray.join("");
-}
+} // O(n)
 
 const URLify3 = (str: string, length: number): string => {
   let newStr = "";

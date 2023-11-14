@@ -1,0 +1,1 @@
+const palindromePermutation = (str: string, length: number): boolean => {}
