@@ -1,20 +1,28 @@
 import { expect, describe, it } from "bun:test";
-import { palindromePermutation } from "./1.4-palindrome-permutation";
+import {
+  palindromePermutation,
+  checkMaxOneOdd,
+} from "./1.4-palindrome-permutation";
 
 describe("1.4 - Palindrome Permutation", () => {
+  const fns = [palindromePermutation, checkMaxOneOdd];
   it("should return true for palindrome permutations", () => {
-    expect(palindromePermutation("racecar")).toEqual(true);
-    expect(palindromePermutation("taco cat")).toEqual(true);
-    expect(palindromePermutation("abba")).toEqual(true);
-    expect(palindromePermutation("aab")).toEqual(true);
-    expect(palindromePermutation("aaaabbbb")).toEqual(true);
-    expect(palindromePermutation('abcdeeabc')).toBeTrue()
+    for (let fn of fns) {
+      expect(fn("racecar")).toEqual(true);
+      expect(fn("taco cat")).toEqual(true);
+      expect(fn("abba")).toEqual(true);
+      expect(fn("aab")).toEqual(true);
+      expect(fn("aaaabbbb")).toEqual(true);
+      expect(fn("abcdeeabc")).toBeTrue();
+    }
   });
 
   it("should return false for non-palindrome permutations", () => {
-    expect(palindromePermutation("hello")).toEqual(false);
-    expect(palindromePermutation("world")).toEqual(false);
-    expect(palindromePermutation("ab")).toEqual(false);
-    expect(palindromePermutation("abc")).toEqual(false);
+    for (let fn of fns) {
+      expect(fn("hello")).toEqual(false);
+      expect(fn("world")).toEqual(false);
+      expect(fn("ab")).toEqual(false);
+      expect(fn("abc")).toEqual(false);
+    }
   });
 });
