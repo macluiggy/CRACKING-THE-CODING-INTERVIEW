@@ -19,7 +19,7 @@ const palindromePermutation = (str: string): boolean => {
   }
 
   return true;
-};
+}; // O(n)
 
 const checkMaxOneOdd = (str: string): boolean => {
   str = str.replace(/\s/g, "");
@@ -40,6 +40,47 @@ const checkMaxOneOdd = (str: string): boolean => {
   }
 
   return true;
-};
+}; // O(n)
 
-export { palindromePermutation, checkMaxOneOdd };
+function isPermutationOfPalindrome(phrase: string): boolean {
+  let bitVector = createBitVector(phrase);
+  return bitVector === 0 || checkExactlyOneBitSet(bitVector);
+} // O(n)
+
+function createBitVector(phrase: string): number {
+  let bitVector = 0;
+  for (let c of phrase) {
+    let x = getCharNumber(c);
+    bitVector = toggle(bitVector, x);
+  }
+  return bitVector;
+}
+
+function toggle(bitVector: number, index: number): number {
+  if (index < 0) return bitVector;
+  let mask = 1 << index;
+  if ((bitVector & mask) === 0) {
+    bitVector |= mask;
+  } else {
+    bitVector &= ~mask;
+  }
+  return bitVector;
+}
+
+function checkExactlyOneBitSet(bitVector: number): boolean {
+  return (bitVector & (bitVector - 1)) === 0;
+}
+
+function getCharNumber(c: string): number {
+  const aCharCode = "a".charCodeAt(0);
+  const zCharCode = "z".charCodeAt(0);
+  const cCharCode = c.toLowerCase().charCodeAt(0);
+
+  if (cCharCode < aCharCode || cCharCode > zCharCode) {
+    return -1; // character is not a letter
+  }
+
+  return cCharCode - aCharCode;
+}
+
+export { palindromePermutation, checkMaxOneOdd, isPermutationOfPalindrome };

@@ -2,10 +2,15 @@ import { expect, describe, it } from "bun:test";
 import {
   palindromePermutation,
   checkMaxOneOdd,
+  isPermutationOfPalindrome,
 } from "./1.4-palindrome-permutation";
 
 describe("1.4 - Palindrome Permutation", () => {
-  const fns = [palindromePermutation, checkMaxOneOdd];
+  const fns = [
+    palindromePermutation,
+    checkMaxOneOdd,
+    isPermutationOfPalindrome,
+  ];
   it("should return true for palindrome permutations", () => {
     for (let fn of fns) {
       expect(fn("racecar")).toEqual(true);
