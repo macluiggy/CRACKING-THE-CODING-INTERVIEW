@@ -10,8 +10,7 @@ const stringCompression = (str: string) => {
     }
   }
 
-  return newStr.length < str.length ? newStr : str;
+  return newStr.length >= str.length ? str : newStr;
 };
 
 export { stringCompression };
-
