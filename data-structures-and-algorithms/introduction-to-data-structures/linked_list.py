@@ -134,24 +134,41 @@ class LinkedList:
                 current = current.next
         
         return current
+    
+    def node_at_index(self, index):
+        """
+        Returns the Node at specified index
+        Takes O(n) time
+        """
+        if index == 0:
+            return self.head
+        
+        current = self.head
+        position = 0
+
+        while position < index:
+            current = current.next
+            position += 1
+        
+        return current
 
 # N1 = Node(10)
 # print(N1.__repr__())
 # N2 = Node(20)
 # N1.next = N2
 # print(N1.next.__repr__())
-
-l = LinkedList()
-l.add(10)
-l.add(20)
-l.add(30)
-# l.add({'name': 'John'})
-# print(l.size())
-# print(l.__repr__())
-print(l.search(20))
-print(l.search(50))
+# exit()
+# l = LinkedList()
+# l.add(10)
+# l.add(20)
+# l.add(30)
+# # l.add({'name': 'John'})
+# # print(l.size())
+# # print(l.__repr__())
+# print(l.search(20))
+# print(l.search(50))
+# # print(l)
+# l.insert(15, 2)
 # print(l)
-l.insert(15, 2)
-print(l)
-print(l.remove(20))
-print(l)
+# print(l.remove(20))
+# print(l)
