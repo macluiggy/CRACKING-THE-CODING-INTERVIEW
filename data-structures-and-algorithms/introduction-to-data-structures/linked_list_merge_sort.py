@@ -46,7 +46,7 @@ def split(linked_list: LinkedList):
 
         return left_half, right_half
     
-def merge(left, right):
+def merge(left: LinkedList, right: LinkedList):
     """
     Merges two linked lists, sorting by data in nodes
     Returns a new, merged list
@@ -114,7 +114,7 @@ l = LinkedList()
 l.add(5)
 l.add(10)
 l.add(3)
-# print(l)
+print(l)
 
 sorted_linked_list = merge_sort(l)
 print(sorted_linked_list)
