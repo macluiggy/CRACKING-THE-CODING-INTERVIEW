@@ -1,16 +1,19 @@
-import { maxDepth } from "./maxDepth";
+import { maxDepth, maxDepth2 } from "./maxDepth";
 
 describe("maxDepth", () => {
+  const fns = [maxDepth, maxDepth2];
   it("should return the maximum depth of a string", () => {
-    expect(maxDepth("()")).toBe(1);
-    expect(maxDepth("()()")).toBe(1);
-    expect(maxDepth("(())")).toBe(2);
-    expect(maxDepth("((()))")).toBe(3);
-    expect(maxDepth("()()()")).toBe(1);
-    expect(maxDepth("((()()))")).toBe(3);
-    expect(maxDepth("()(()())")).toBe(2);
-    expect(maxDepth("()(()())()")).toBe(2);
-    expect(maxDepth("(1+(2*3)+((8)/4))+1")).toBe(3);
+    for (let fn of fns) {
+      expect(fn("()")).toBe(1);
+      expect(fn("()()")).toBe(1);
+      expect(fn("(())")).toBe(2);
+      expect(fn("((()))")).toBe(3);
+      expect(fn("()()()")).toBe(1);
+      expect(fn("((()()))")).toBe(3);
+      expect(fn("()(()())")).toBe(2);
+      expect(fn("()(()())()")).toBe(2);
+      expect(fn("(1+(2*3)+((8)/4))+1")).toBe(3);
+    }
   });
 
   it("should return 0 for an empty string", () => {

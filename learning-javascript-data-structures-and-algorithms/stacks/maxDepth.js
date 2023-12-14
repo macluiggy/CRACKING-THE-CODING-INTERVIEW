@@ -22,6 +22,23 @@ const maxDepth = (s) => {
   return maxCount;
 }
 
+const maxDepth2 = (s) => {
+  const stack = new Stack();
+  let max = 0;
+  s = s.replace(/[^()]/g, "");
+  for (let i = 0; i < s.length; i++) {
+    const char = s[i];
+    if (char === "(") {
+      stack.push(char);
+      max = Math.max(max, stack.size());
+    } else if (char === ")") {
+      stack.pop();
+    }
+  }
+  return max;
+}
+
 export {
-  maxDepth
+  maxDepth,
+  maxDepth2
 }
