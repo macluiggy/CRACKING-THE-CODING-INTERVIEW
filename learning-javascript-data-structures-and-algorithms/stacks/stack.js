@@ -1,4 +1,4 @@
-class Stack {
+export class Stack {
   #count = 0;
   #items = {};
   constructor() {
@@ -58,20 +58,20 @@ class Stack {
   }
 }
 
-const stack = new Stack();
-// stack.push(5);
-// stack.push(8);
-// console.log(stack); // outputs Stack { count: 2, items: { '0': 5, '1': 8 }, push: [Function], size: [Function], isEmpty: [Function], pop: [Function], peek: [Function], clear: [Function], toString: [Function] }
-// console.log(stack.peek()); // outputs 8
-// stack.push(11);
-// console.log(stack.size()); // outputs 3
-// console.log(stack.isEmpty()); // outputs false
-// stack.push(15);
-// stack.pop();
-// stack.pop();
-// console.log(stack.size()); // outputs 2
-// stack.clear();
-console.log(stack.toString()); // outputs 5,8
-console.log(Object.getOwnPropertyNames(stack)); // {1}
-console.log(Object.keys(stack)); // {2}
-console.log(stack); // {3}
+// const stack = new Stack();
+// // stack.push(5);
+// // stack.push(8);
+// // console.log(stack); // outputs Stack { count: 2, items: { '0': 5, '1': 8 }, push: [Function], size: [Function], isEmpty: [Function], pop: [Function], peek: [Function], clear: [Function], toString: [Function] }
+// // console.log(stack.peek()); // outputs 8
+// // stack.push(11);
+// // console.log(stack.size()); // outputs 3
+// // console.log(stack.isEmpty()); // outputs false
+// // stack.push(15);
+// // stack.pop();
+// // stack.pop();
+// // console.log(stack.size()); // outputs 2
+// // stack.clear();
+// console.log(stack.toString()); // outputs 5,8
+// console.log(Object.getOwnPropertyNames(stack)); // {1}
+// console.log(Object.keys(stack)); // {2}
+// console.log(stack); // {3}
