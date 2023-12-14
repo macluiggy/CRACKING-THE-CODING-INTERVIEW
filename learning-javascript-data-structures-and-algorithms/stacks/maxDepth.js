@@ -5,18 +5,13 @@ const maxDepth = (s) => {
   // replace all with "" except for ( and )
   s = s.replace(/[^()]/g, "");
   let maxCount = 0;
-  let count = 0;
   for (let i = 0; i < s.length; i++) {
     const char = s[i];
     if (char == '('){
       stack.push(char);
-      count++;
-      if (count > maxCount) {
-        maxCount = count;
-      }
+      maxCount = Math.max(maxCount, stack.size());
     } else {
       stack.pop();
-      count--;
     }
   }
   return maxCount;
