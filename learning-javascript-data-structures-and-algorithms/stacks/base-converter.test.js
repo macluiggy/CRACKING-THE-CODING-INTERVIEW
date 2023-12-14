@@ -16,6 +16,7 @@ describe("baseConverter", () => {
     expect(baseConverter(1000, 16)).toBe("3E8");
     expect(baseConverter(1000, 10)).toBe("1000");
     expect(baseConverter(11, 0)).toBe("");
+    expect(baseConverter(12345, 36)).toBe("9IX");
     expect(Math.floor(14%16)).toBe(14);
     expect(Math.floor(14/16)).toBe(0);
     expect(14%16).toBe(14);
