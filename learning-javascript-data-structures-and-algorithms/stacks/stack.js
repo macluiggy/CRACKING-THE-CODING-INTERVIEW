@@ -56,6 +56,19 @@ export class Stack {
     }
     return objString;
   }
+  toStringWithoutCommas() {
+    if (this.isEmpty()) {
+      return "";
+    }
+    let objString = `${this.#items[0]}`; // {1}
+    for (let i = 1; i < this.#count; i++) {
+      // {2}
+      // objString += `,${this.items[i]}`; // {3}
+      objString = `${objString}${this.#items[i]}`; // {3}
+    }
+    return objString;
+  }
+  
 }
 
 // const stack = new Stack();
