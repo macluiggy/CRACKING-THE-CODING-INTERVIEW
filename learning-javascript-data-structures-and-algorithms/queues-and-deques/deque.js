@@ -73,6 +73,12 @@ class Deque {
     this.count--;
     return result;
   }
+  peekFront() {
+    return this.isEmpty() ? undefined : this.items[this.lowestCount];
+  }
+  peekBack() {
+    return this.isEmpty() ? undefined : this.items[this.count];
+  }
 }
 
 const deque = new Deque();
@@ -89,3 +95,6 @@ console.log(deque.toString()); // Jack,Camila
 deque.removeBack(); // Camila decides to leave
 console.log(deque.toString()); // Jack
 deque.addFront("John"); // John comes back for
+console.log(deque.peek());
+console.log(deque.peekBack());
+console.log(deque.peekFront());
