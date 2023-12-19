@@ -10,12 +10,12 @@ class Queue {
     this.count++;
   }
   dequeue() {
-    if (this.isEmpty) {
+    if (this.isEmpty()) {
       return undefined;
     }
     const result = this.items[this.lowestCount];
     delete this.items[this.lowestCount];
-    this.lowestCount++;
+    this.lowestCount++
     return result;
   }
   isEmpty() {
@@ -44,6 +44,8 @@ class Queue {
     return objString;
   }
 }
+
+export default Queue;
 
 const queue = new Queue();
 console.log(queue.isEmpty()); // outputs true
