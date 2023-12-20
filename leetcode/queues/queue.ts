@@ -1,7 +1,9 @@
-class Queue {
+class Queue<T> {
   count: number
   lowestCount: number
-  items: any
+  items: {
+    [key: number]: T;
+  };
   constructor() {
     this.count = 0;
     this.lowestCount = 0;

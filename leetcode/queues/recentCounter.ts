@@ -1,21 +1,26 @@
 import Queue from "./queue";
 
-class RecentCounter extends Queue {
+class RecentCounter {
+  queue: Queue<number>
   constructor() {
-    super();
+    this.queue = new Queue()
   }
-
   ping(t: number): number {
-    this.enqueue(t);
+    this.queue.enqueue(t);
     const range = [t - 3000, t];
     const [x0, xf] = range;
-    const first = this.peek();
 
-    const isFirstInRange = first >= x0 && first <= xf;
-    if (!isFirstInRange) {
-      this.dequeue()
+    while (!this.queue.isEmpty()) {
+      const first = this.queue.peek()!;
+
+      const isFirstInRange = first >= x0 && first <= xf;
+      if (!isFirstInRange) {
+        this.queue.dequeue();
+      } else {
+        break;
+      }
     }
-    return this.size()
+    return this.queue.size();
   }
 }
 
