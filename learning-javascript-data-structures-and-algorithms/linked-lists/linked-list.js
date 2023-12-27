@@ -42,6 +42,16 @@ export default class LinkedList {
     this.count--;
     return current.element;
   }
+
+  getElementAt(index) {
+    const isInRange = index >= 0 && index < this.count;
+    if (!isInRange) return undefined;
+    let current = this.head;
+    for (let i = 0; i < index && current !== null; i++) {
+      current = current.next;
+    }
+    return current;
+  }
 }
 
 const list = new LinkedList();
