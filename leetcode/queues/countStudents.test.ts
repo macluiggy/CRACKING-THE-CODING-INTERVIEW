@@ -9,3 +9,4 @@ describe("countStudents", () => {
     expect(countStudents([0, 0, 0, 0, 0], [1, 1, 1, 1, 1])).toEqual(5);
   });
 });
+
