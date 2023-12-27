@@ -19,11 +19,30 @@ export default class LinkedList {
       }
       current.next = node;
     }
-    this.count++
+    this.count++;
     console.log(this.head);
   }
-}
 
+  removeAt(index) {
+    const isInRange = index >= 0 && index < this.count;
+    if (!isInRange) {
+      return undefined;
+    }
+    let current = this.head;
+    if (index === 0) {
+      this.head = current.next;
+    } else {
+      let previous;
+      for (let i = 0; i < index; i++) {
+        previous = current;
+        current = current.next;
+      }
+      previous.next = current.next;
+    }
+    this.count--;
+    return current.element;
+  }
+}
 
 const list = new LinkedList();
 list.push(15);
