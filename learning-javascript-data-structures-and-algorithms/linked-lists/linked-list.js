@@ -21,7 +21,7 @@ export default class LinkedList {
       current.next = node;
     }
     this.count++;
-    console.log(this.head);
+    // console.log(this.head);
   }
 
   removeAt(index) {
@@ -117,10 +117,10 @@ export default class LinkedList {
 
   toString() {
     if (this.isEmpty()) return "";
-    let objString = `${this.getHead().element}`;
-    let current = this.getHead().next;
-    for (let i = 0; i < this.size() && current; i++) {
-      objString += `,${current.element}`;
+    let objString = `${this.head.element}`;
+    let current = this.head.next;
+    for (let i = 1; i < this.size() && current!=null; i++) {
+      objString = `${objString},${current.element}`;
     }
     return objString;
   }
@@ -129,3 +129,4 @@ export default class LinkedList {
 const list = new LinkedList();
 list.push(15);
 list.push(10);
+console.log(list.toString());
