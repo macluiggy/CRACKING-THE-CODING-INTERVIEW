@@ -46,14 +46,34 @@ export default class LinkedList {
     return current.element;
   }
 
+  isInRange(index) {
+    return index >= 0 && index < this.count;
+  }
+
   getElementAt(index) {
-    const isInRange = index >= 0 && index < this.count;
-    if (!isInRange) return undefined;
+    if (!this.isInRange()) return undefined;
     let current = this.head;
     for (let i = 0; i < index && current !== null; i++) {
       current = current.next;
     }
     return current;
+  }
+
+  insert(element, index) {
+    if (!this.isInRange()) return false
+    const node = new Node(element)
+    if (index ===0) {
+      const current = this.head
+      node.next = current
+      this.head = node
+    } else {
+      const previous = this.getElementAt(index-1)
+      const current = previous.next
+      previous.next = node
+      node.next = current
+    }
+    this.count++
+    return true
   }
 }
 
