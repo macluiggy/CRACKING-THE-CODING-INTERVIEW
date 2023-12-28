@@ -96,12 +96,13 @@ export default class LinkedList {
     }
     return -1;
   }
-  
+
   remove(element) {
     const index = this.indexOf(element)
     const removed = this.removeAt(index)
     return removed
   }
+  
 }
 
 const list = new LinkedList();
