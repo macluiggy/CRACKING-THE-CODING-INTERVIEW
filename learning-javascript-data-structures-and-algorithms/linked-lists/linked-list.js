@@ -1,7 +1,8 @@
 import { Node } from "./models/liked-list-models";
+import { defaultEquals } from "./utils";
 
 export default class LinkedList {
-  constructor(equalsFn = {}) {
+  constructor(equalsFn = defaultEquals) {
     this.count = 0;
     this.head = null;
     this.equalsFn = equalsFn;
@@ -60,20 +61,40 @@ export default class LinkedList {
   }
 
   insert(element, index) {
-    if (!this.isInRange()) return false
-    const node = new Node(element)
-    if (index ===0) {
-      const current = this.head
-      node.next = current
-      this.head = node
+    if (!this.isInRange()) return false;
+    const node = new Node(element);
+    if (index === 0) {
+      const current = this.head;
+      node.next = current;
+      this.head = node;
     } else {
-      const previous = this.getElementAt(index-1)
-      const current = previous.next
-      previous.next = node
-      node.next = current
+      const previous = this.getElementAt(index - 1);
+      const current = previous.next;
+      previous.next = node;
+      node.next = current;
     }
-    this.count++
-    return true
+    this.count++;
+    return true;
+  }
+  indexOf(element) {
+    // let current = this.head;
+    // let count = 0;
+    // let found = false;
+    // while (!found) {
+    //   if (current.element === element) {
+    //     found = true;
+    //   } else {
+    //     current = current.next;
+    //     count++;
+    //   }
+    // }
+    // return count;
+    let current = this.head;
+    for (let i = 0; i < this.count && current; i++) {
+      if (this.equalsFn(element, current.element)) return i;
+      current = current.next;
+    }
+    return -1;
   }
 }
 
