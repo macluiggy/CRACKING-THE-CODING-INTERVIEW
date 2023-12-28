@@ -119,7 +119,7 @@ export default class LinkedList {
     if (this.isEmpty()) return "";
     let objString = `${this.head.element}`;
     let current = this.head.next;
-    for (let i = 1; i < this.size() && current!=null; i++) {
+    for (let i = 1; i < this.size() && current != null; i++) {
       objString = `${objString},${current.element}`;
     }
     return objString;
