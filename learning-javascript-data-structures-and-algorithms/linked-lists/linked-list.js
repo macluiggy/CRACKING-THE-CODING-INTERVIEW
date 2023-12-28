@@ -98,11 +98,32 @@ export default class LinkedList {
   }
 
   remove(element) {
-    const index = this.indexOf(element)
-    const removed = this.removeAt(index)
-    return removed
+    const index = this.indexOf(element);
+    const removed = this.removeAt(index);
+    return removed;
   }
-  
+
+  isEmpty() {
+    return this.size() === 0;
+  }
+
+  size() {
+    return this.count;
+  }
+
+  getHead() {
+    return this.head;
+  }
+
+  toString() {
+    if (this.isEmpty()) return "";
+    let objString = `${this.getHead().element}`;
+    let current = this.getHead().next;
+    for (let i = 0; i < this.size() && current; i++) {
+      objString += `,${current.element}`;
+    }
+    return objString;
+  }
 }
 
 const list = new LinkedList();
