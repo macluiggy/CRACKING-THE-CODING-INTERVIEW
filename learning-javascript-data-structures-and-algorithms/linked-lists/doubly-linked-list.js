@@ -37,4 +37,32 @@ export default class DoublyLinkedList extends LinkedList {
     this.count++;
     return true;
   }
+
+  removeAt(index) {
+    if (!this.isInRange(index)) return undefined;
+    let current = this.head;
+    if (index === 0) {
+      this.head = current.next;
+      const onlyOneItem = this.count === 1;
+      if (onlyOneItem) {
+        this.tail = nu;
+      } else {
+        this.head.prev = null;
+      }
+    } else if (index === this.count - 1) {
+      current = this.tail;
+      this.tail = current.prev;
+      this.tail.next = null;
+    } else {
+      // const previous = this.getElementAt(index - 1);
+      // current = previous.next;
+      current = this.getElementAt(index);
+      const previous = current.prev;
+      // link previous with current's next - skip it to remove
+      previous.next = current.next;
+      current.next.prev = previous;
+    }
+    this.count--;
+    return current.element;
+  }
 }
