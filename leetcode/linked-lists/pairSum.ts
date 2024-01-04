@@ -13,8 +13,18 @@
 import ListNode from "./listNode";
 
 function pairSum(head: ListNode | null): number {
-    let array = listToArray(head)
-};
+  let array = listToArray(head);
+  let arrayPairSum = [];
+  while (array.length) {
+    let left = array.shift()!;
+    let right = array.splice(-1)[0];
+    // Perform pair sum calculation here
+    let sum = left + right
+    arrayPairSum.push(sum)
+  }
+
+  return Math.max(...arrayPairSum)
+}
 
 function listToArray(head: ListNode | null): number[] {
   const array: number[] = [];
@@ -25,3 +35,5 @@ function listToArray(head: ListNode | null): number[] {
   }
   return array;
 }
+
+export default pairSum
