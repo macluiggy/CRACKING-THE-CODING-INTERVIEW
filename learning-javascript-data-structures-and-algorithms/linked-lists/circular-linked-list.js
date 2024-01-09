@@ -32,9 +32,7 @@ class CirculatLinkedList extends LinkedList {
   }
 
   removeAt(index) {
-    if (!this.isInRange(index)) {
-      return undefined;
-    }
+    if (!this.isInRange(index)) return undefined;
     let current = this.head;
     if (index === 0) {
       if (this.size() === 1) {
