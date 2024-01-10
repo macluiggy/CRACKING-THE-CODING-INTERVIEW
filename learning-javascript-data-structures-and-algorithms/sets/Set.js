@@ -96,6 +96,18 @@ class Set {
     });
     return intersectionSet;
   }
+
+  difference(otherSet) {
+    const differenceSet = new Set();
+    const values = this.values();
+    for (let i = 0; i < values.length; i++) {
+      const value = values[i];
+      if (!otherSet.has(value)) {
+        differenceSet.add(value);
+      }
+    }
+    return differenceSet;
+  }
 }
 
 // const set = new Set();
@@ -133,6 +145,17 @@ class Set {
 // const unionAB = setA.union(setB);
 // console.log(unionAB.values());
 
+// const setA = new Set();
+// setA.add(1);
+// setA.add(2);
+// setA.add(3);
+// const setB = new Set();
+// setB.add(2);
+// setB.add(3);
+// setB.add(4);
+// const intersectionAB = setA.intersection(setB);
+// console.log(intersectionAB.values());
+
 const setA = new Set();
 setA.add(1);
 setA.add(2);
@@ -141,5 +164,5 @@ const setB = new Set();
 setB.add(2);
 setB.add(3);
 setB.add(4);
-const intersectionAB = setA.intersection(setB);
-console.log(intersectionAB.values());
+const differenceAB = setA.difference(setB);
+console.log(differenceAB.values());
