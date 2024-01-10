@@ -64,16 +64,36 @@ class Set {
     return unionSet;
   }
 
-  intersection(otherSet) {
-    const intersectionSet = new Set();
+  // intersection(otherSet) {
+  //   const intersectionSet = new Set();
 
-    const values = this.values();
-    for (let i = 0; i < values.length; i++) {
-      const value = values[i];
-      if (otherSet.has(value)) {
+  //   const values = this.values();
+  //   for (let i = 0; i < values.length; i++) {
+  //     const value = values[i];
+  //     if (otherSet.has(value)) {
+  //       intersectionSet.add(value);
+  //     }
+  //   }
+  //   return intersectionSet;
+  // }
+
+  intersection(otherSet) {
+    const intersectionSet = new Set(); // {1}
+    const values = this.values(); // {2}
+    const otherValues = otherSet.values(); // {3}
+    let biggerSet = values; // {4}
+    let smallerSet = otherValues; // {5}
+    if (otherValues.length - values.length > 0) {
+      // {6}
+      biggerSet = otherValues;
+      smallerSet = values;
+    }
+    smallerSet.forEach((value) => {
+      // {7}
+      if (biggerSet.includes(value)) {
         intersectionSet.add(value);
       }
-    }
+    });
     return intersectionSet;
   }
 }
