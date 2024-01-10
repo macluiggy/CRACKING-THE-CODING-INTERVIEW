@@ -63,6 +63,19 @@ class Set {
     otherSet.values().forEach((value) => unionSet.add(value));
     return unionSet;
   }
+
+  intersection(otherSet) {
+    const intersectionSet = new Set();
+
+    const values = this.values();
+    for (let i = 0; i < values.length; i++) {
+      const value = values[i];
+      if (otherSet.has(value)) {
+        intersectionSet.add(value);
+      }
+    }
+    return intersectionSet;
+  }
 }
 
 // const set = new Set();
@@ -88,14 +101,25 @@ class Set {
 // set.delete(2);
 // console.log(set.values()); // outputs []
 
+// const setA = new Set();
+// setA.add(1);
+// setA.add(2);
+// setA.add(3);
+// const setB = new Set();
+// setB.add(3);
+// setB.add(4);
+// setB.add(5);
+// setB.add(6);
+// const unionAB = setA.union(setB);
+// console.log(unionAB.values());
+
 const setA = new Set();
 setA.add(1);
 setA.add(2);
 setA.add(3);
 const setB = new Set();
+setB.add(2);
 setB.add(3);
 setB.add(4);
-setB.add(5);
-setB.add(6);
-const unionAB = setA.union(setB);
-console.log(unionAB.values());
+const intersectionAB = setA.intersection(setB);
+console.log(intersectionAB.values());
