@@ -108,6 +108,13 @@ class Set {
     }
     return differenceSet;
   }
+
+  isSubsetOf(otherSet) {
+    if (this.size() > otherSet.size()) return false;
+    let values = this.values(); // assuming `values` is a method that returns the set's values
+    let isSubsetOf = values.every((value) => otherSet.has(value));
+    return isSubsetOf;
+  }
 }
 
 // const set = new Set();
@@ -156,13 +163,27 @@ class Set {
 // const intersectionAB = setA.intersection(setB);
 // console.log(intersectionAB.values());
 
+// const setA = new Set();
+// setA.add(1);
+// setA.add(2);
+// setA.add(3);
+// const setB = new Set();
+// setB.add(2);
+// setB.add(3);
+// setB.add(4);
+// const differenceAB = setA.difference(setB);
+// console.log(differenceAB.values());
+
 const setA = new Set();
 setA.add(1);
 setA.add(2);
-setA.add(3);
 const setB = new Set();
+setB.add(1);
 setB.add(2);
 setB.add(3);
-setB.add(4);
-const differenceAB = setA.difference(setB);
-console.log(differenceAB.values());
+const setC = new Set();
+setC.add(2);
+setC.add(3);
+setC.add(4);
+console.log(setA.isSubsetOf(setB));
+console.log(setA.isSubsetOf(setC));
