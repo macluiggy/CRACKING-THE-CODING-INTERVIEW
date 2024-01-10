@@ -56,6 +56,13 @@ class Set {
     }
     return values;
   }
+
+  union(otherSet) {
+    const unionSet = new Set();
+    this.values().forEach((value) => unionSet.add(value));
+    otherSet.values().forEach((value) => unionSet.add(value));
+    return unionSet;
+  }
 }
 
 // const set = new Set();
@@ -63,20 +70,32 @@ class Set {
 // set.add(2);
 // console.log(set.items);
 
-const set = new Set();
-set.add(1);
-console.log(set.values()); // outputs [1]
-console.log(set.has(1));
-// outputs true
-console.log(set.size());
-// outputs 1
-set.add(2);
-console.log(set.values()); // outputs [1, 2]
-console.log(set.has(2));
-// true
-console.log(set.size());
-// 2
-set.delete(1);
-console.log(set.values()); // outputs [2]
-set.delete(2);
-console.log(set.values()); // outputs []
+// const set = new Set();
+// set.add(1);
+// console.log(set.values()); // outputs [1]
+// console.log(set.has(1));
+// // outputs true
+// console.log(set.size());
+// // outputs 1
+// set.add(2);
+// console.log(set.values()); // outputs [1, 2]
+// console.log(set.has(2));
+// // true
+// console.log(set.size());
+// // 2
+// set.delete(1);
+// console.log(set.values()); // outputs [2]
+// set.delete(2);
+// console.log(set.values()); // outputs []
+
+const setA = new Set();
+setA.add(1);
+setA.add(2);
+setA.add(3);
+const setB = new Set();
+setB.add(3);
+setB.add(4);
+setB.add(5);
+setB.add(6);
+const unionAB = setA.union(setB);
+console.log(unionAB.values());
