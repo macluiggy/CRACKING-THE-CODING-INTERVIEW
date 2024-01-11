@@ -1,0 +1,3 @@
+const defaultToString = () => {};
+
+export { defaultToString };
