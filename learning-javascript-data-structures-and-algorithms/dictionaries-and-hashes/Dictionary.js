@@ -44,5 +44,5 @@ export default class Dictionary {
 
   keyValues() {
     return Object.values(this.table);
-    }
+  }
 }
