@@ -45,4 +45,52 @@ export default class Dictionary {
   keyValues() {
     return Object.values(this.table);
   }
+
+  keys() {
+    return this.keyValues().map((valuePair) => valuePair.key);
+  }
+
+  values() {
+    return this.keyValues().map((valuePair) => valuePair.value);
+  }
+
+  forEach(callbackFn) {
+    const valuePairs = this.keyValues(); // {1}
+    for (let i = 0; i < valuePairs.length; i++) {
+      // {2}
+      const result = callbackFn(valuePairs[i].key, valuePairs[i].value); // {3}
+      if (result === false) {
+        break; // {4}
+      }
+    }
+  }
+
+  size() {
+    return Object.keys(this.table).length;
+  }
+
+  isEmpty() {
+    return this.size() === 0;
+  }
+
+  clear() {
+    this.table = {};
+  }
+
+  toString() {
+    if (this.isEmpty()) {
+      return "";
+    }
+    const valuePairs = this.keyValues();
+    let objString = `${valuePairs[0].toString()}`; // {1}
+    for (let i = 1; i < valuePairs.length; i++) {
+      objString = `${objString},${valuePairs[i].toString()}`; // {2}
+    }
+    return objString; // {3}
+  }
 }
+
+const dictionary = new Dictionary();
+dictionary.set('Gandalf', 'gandalf@email.com');
+dictionary.set('John', 'johnsnow@email.com');
+dictionary.set('Tyrion', 'tyrion@email.com');
