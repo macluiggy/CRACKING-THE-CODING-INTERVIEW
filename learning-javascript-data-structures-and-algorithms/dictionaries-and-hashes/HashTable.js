@@ -58,18 +58,55 @@ class HashTable {
     }
     return false;
   }
+  // get(key) {
+  //   const valuePair = this.table[this.hashCode(key)];
+  //   return valuePair == null ? undefined : valuePair.value;
+  // }
   get(key) {
-    const valuePair = this.table[this.hashCode(key)];
-    return valuePair == null ? undefined : valuePair.value;
-  }
-  remove(key) {
-    const hash = this.hashCode(key); // {1}
-    const valuePair = this.table[hash]; // {2}
-    if (valuePair != null) {
-      delete this.table[hash]; // {3}
-      return true;
+    const position = this.hashCode(key);
+    const linkedList = this.table[position]; // {1}
+    if (linkedList != null && !linkedList.isEmpty()) {
+      // {2}
+      let current = linkedList.getHead(); // {3}
+      while (current != null) {
+        // {4}
+        if (current.element.key === key) {
+          // {5}
+          return current.element.value; // {6}
+        }
+        current = current.next; // {7}
+      }
     }
-    return false;
+    return undefined; // {8}
+  }
+  // remove(key) {
+  //   const hash = this.hashCode(key); // {1}
+  //   const valuePair = this.table[hash]; // {2}
+  //   if (valuePair != null) {
+  //     delete this.table[hash]; // {3}
+  //     return true;
+  //   }
+  //   return false;
+  // }
+  remove(key) {
+    const position = this.hashCode(key);
+    const linkedList = this.table[position];
+    if (linkedList != null && !linkedList.isEmpty()) {
+      let current = linkedList.getHead();
+      while (current != null) {
+        if (current.element.key === key) {
+          // {1}
+          linkedList.remove(current.element); // {2}
+          if (linkedList.isEmpty()) {
+            // {3}
+            delete this.table[position]; // {4}
+          }
+          return true; // {5}
+        }
+        current = current.next; // {6}
+      }
+    }
+    return false; // {7}
   }
   toString() {
     if (this.isEmpty()) {
