@@ -1,13 +1,6 @@
 import { defaultToString } from "../util.js";
-class ValuePair {
-  constructor(key, value) {
-    this.key = key;
-    this.value = value;
-  }
-  toString() {
-    return `[#${this.key}: ${this.value}]`;
-  }
-}
+import ValuePair from "./ValuePair.js";
+
 export default class Dictionary {
   constructor(toStrFn = defaultToString) {
     this.toStrFn = toStrFn; // {1}
