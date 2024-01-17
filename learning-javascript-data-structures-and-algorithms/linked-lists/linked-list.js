@@ -1,5 +1,5 @@
-import { Node } from "./models/liked-list-models";
-import { defaultEquals } from "./utils";
+import { Node } from "./models/liked-list-models.js";
+import { defaultEquals } from "../util.js";
 
 export default class LinkedList {
   constructor(equalsFn = defaultEquals) {

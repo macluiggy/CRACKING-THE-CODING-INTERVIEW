@@ -8,5 +8,6 @@ const defaultToString = (item) => {
   }
   return item.toString(); // {1}};
 };
+const defaultEquals = (a, b) => a === b;
 
-export { defaultToString };
+export { defaultToString, defaultEquals };
