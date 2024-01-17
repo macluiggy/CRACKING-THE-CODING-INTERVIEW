@@ -37,27 +37,27 @@ class HashTable {
     return this.loseloseHashCode(key);
   }
 
-  put(key, value) {
-    if (key != null && value != null) {
-      // {1}
-      const position = this.hashCode(key); // {2}
-      this.table[position] = new ValuePair(key, value); // {3}
-      return true;
-    }
-    return false;
-  }
   // put(key, value) {
   //   if (key != null && value != null) {
-  //     const position = this.hashCode(key);
-  //     if (this.table[position] == null) {
-  //       // {1}
-  //       this.table[position] = new LinkedList(); // {2}
-  //     }
-  //     this.table[position].push(new ValuePair(key, value)); // {3}
+  //     // {1}
+  //     const position = this.hashCode(key); // {2}
+  //     this.table[position] = new ValuePair(key, value); // {3}
   //     return true;
   //   }
   //   return false;
   // }
+  put(key, value) {
+    if (key != null && value != null) {
+      const position = this.hashCode(key);
+      if (this.table[position] == null) {
+        // {1}
+        this.table[position] = new LinkedList(); // {2}
+      }
+      this.table[position].push(new ValuePair(key, value)); // {3}
+      return true;
+    }
+    return false;
+  }
   get(key) {
     const valuePair = this.table[this.hashCode(key)];
     return valuePair == null ? undefined : valuePair.value;

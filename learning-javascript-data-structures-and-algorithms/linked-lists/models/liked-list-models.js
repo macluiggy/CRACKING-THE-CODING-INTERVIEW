@@ -7,7 +7,7 @@ class Node {
 
 class DoublyNode {
   constructor(element, next, prev) {
-    super(element, next);
+    // super(element, next);
     this.prev = prev;
   }
 }
