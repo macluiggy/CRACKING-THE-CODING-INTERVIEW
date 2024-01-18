@@ -28,8 +28,18 @@ class HashTableLinearProbing {
     }
     return hash % 37; // {5}
   }
+  djb2HashCode(key) {
+    const tableKey = this.toStrFn(key); // {1}
+    let hash = 5381; // {2}
+    for (let i = 0; i < tableKey.length; i++) {
+      // {3}
+      hash = hash * 33 + tableKey.charCodeAt(i); // {4}
+    }
+    return hash % 1013; // {5}
+  }
   hashCode(key) {
-    return this.loseloseHashCode(key);
+    // return this.loseloseHashCode(key);
+    return this.djb2HashCode(key);
   }
 
   put(key, value) {
@@ -52,40 +62,58 @@ class HashTableLinearProbing {
   }
   get(key) {
     const position = this.hashCode(key);
-    const linkedList = this.table[position]; // {1}
-    if (linkedList != null && !linkedList.isEmpty()) {
-      // {2}
-      let current = linkedList.getHead(); // {3}
-      while (current != null) {
-        // {4}
-        if (current.element.key === key) {
-          // {5}
-          return current.element.value; // {6}
-        }
-        current = current.next; // {7}
+    if (this.table[position] != null) {
+      // {1}
+      if (this.table[position].key === key) {
+        // {2}
+        return this.table[position].value; // {3}
+      }
+      let index = position + 1; // {4}
+      while (this.table[index] != null && this.table[index].key !== key) {
+        // {5}
+        index++;
+      }
+      if (this.table[index] != null && this.table[index].key === key) {
+        // {6}
+        return this.table[position].value; // {7}
       }
     }
     return undefined; // {8}
   }
   remove(key) {
     const position = this.hashCode(key);
-    const linkedList = this.table[position];
-    if (linkedList != null && !linkedList.isEmpty()) {
-      let current = linkedList.getHead();
-      while (current != null) {
-        if (current.element.key === key) {
-          // {1}
-          linkedList.remove(current.element); // {2}
-          if (linkedList.isEmpty()) {
-            // {3}
-            delete this.table[position]; // {4}
-          }
-          return true; // {5}
-        }
-        current = current.next; // {6}
+    if (this.table[position] != null) {
+      if (this.table[position].key === key) {
+        delete this.table[position]; // {1}
+        this.verifyRemoveSideEffect(key, position); // {2}
+        return true;
+      }
+      let index = position + 1;
+      while (this.table[index] != null && this.table[index].key !== key) {
+        index++;
+      }
+      if (this.table[index] != null && this.table[index].key === key) {
+        delete this.table[index]; // {3}
+        this.verifyRemoveSideEffect(key, index); // {4}
+        return true;
       }
     }
-    return false; // {7}
+    return false;
+  }
+  verifyRemoveSideEffect(key, removedPosition) {
+    const hash = this.hashCode(key); // {1}
+    let index = removedPosition + 1; // {2}
+    while (this.table[index] != null) {
+      // {3}
+      const posHash = this.hashCode(this.table[index].key); // {4}
+      if (posHash <= hash || posHash <= removedPosition) {
+        // {5}
+        this.table[removedPosition] = this.table[index]; // {6}
+        delete this.table[index];
+        removedPosition = index;
+      }
+      index++;
+    }
   }
   toString() {
     if (this.isEmpty()) {
