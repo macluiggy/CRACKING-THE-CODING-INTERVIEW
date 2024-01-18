@@ -28,18 +28,8 @@ class HashTableLinearProbing {
     }
     return hash % 37; // {5}
   }
-  djb2HashCode(key) {
-    const tableKey = this.toStrFn(key); // {1}
-    let hash = 5381; // {2}
-    for (let i = 0; i < tableKey.length; i++) {
-      // {3}
-      hash = hash * 33 + tableKey.charCodeAt(i); // {4}
-    }
-    return hash % 1013; // {5}
-  }
   hashCode(key) {
-    // return this.loseloseHashCode(key);
-    return this.djb2HashCode(key);
+    return this.loseloseHashCode(key);
   }
 
   put(key, value) {
