@@ -24,13 +24,13 @@ All the characters of jewels are unique.
  * @param stones 
  */
 function numJewelsInStones(jewels: string, stones: string): number {
-  const map = new Set(jewels);
+  const set = new Set(jewels);
   
   let count = 0;
   for (let i = 0; i < stones.length; i++) {
     const stone = stones[i];
 
-    if (map.has(stone)) {
+    if (set.has(stone)) {
       count++;
     }
   }
