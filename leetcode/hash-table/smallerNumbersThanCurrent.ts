@@ -29,8 +29,31 @@ Example 3:
 Input: nums = [7,7,7,7]
 Output: [0,0,0,0]
  */
+// function smallerNumbersThanCurrent(nums: number[]): number[] {
+//   let result = [];
+//   for (let i = 0; i < nums.length; i++) {
+//     const numi = nums[i];
+//     let count = 0;
+//     for (let j = 0; j < nums.length; j++) {
+//       const numj = nums[j];
+//       if (i === j) {
+//         continue;
+//       }
+//       if (numi > numj) count++;
+//     }
+//     result.push(count);
+//   }
+//   return result;
+// }
 function smallerNumbersThanCurrent(nums: number[]): number[] {
-    
+  console.log(nums);
+  
+  const result = [...nums].sort((a, b) => a - b);
+  console.log(result);
+  
+  console.log(nums.map((num) => result.indexOf(num)));
+  
+  return nums.map((num) => result.indexOf(num))
 };
 
-export default smallerNumbersThanCurrent
+export default smallerNumbersThanCurrent;
