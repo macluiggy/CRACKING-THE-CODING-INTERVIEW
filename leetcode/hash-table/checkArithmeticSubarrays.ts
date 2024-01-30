@@ -14,11 +14,9 @@ function checkArithmeticSubarrays(
   for (let i = 0; i < subArrays.length; i++) {
     const subArray = subArrays[i];
     let isArithmeticDefault = true;
-    for (let j = 0; j < subArray.length; j++) {
-      const e = subArray[j];
+    for (let j = 0; j < subArray.length - 1; j++) { // change here
       let isArithmetic =
-        subArray[j + 1] - subArray[j] === subArray[1] - subArray[0];
-        console.log(isArithmetic, j);
+        subArray[j + 1] - subArray[j] === subArray[1] - subArray[0]; // change here
         
       if (!isArithmetic) {
         isArithmeticDefault = isArithmetic;
@@ -27,7 +25,6 @@ function checkArithmeticSubarrays(
     }
     result.push(isArithmeticDefault);
   }
-  console.log(result);
   return result
 }
 
