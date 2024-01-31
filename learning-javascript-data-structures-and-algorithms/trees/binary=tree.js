@@ -98,9 +98,10 @@ export default class BinarySearchTree {
     } else {
       return true; // {7}
     }
-  }remove(key) {
+  }
+  remove(key) {
     this.root = this.removeNode(this.root, key); // {1}
-    }
+  }
 }
 
 const tree = new BinarySearchTree();
@@ -124,5 +125,5 @@ const printNode = (value) => console.log(value); // {6}
 // tree.inOrderTraverse(printNode); // {7}
 // tree.preOrderTraverse(printNode);
 tree.postOrderTraverse(printNode);
-console.log(tree.search(1) ? 'Key 1 found.' : 'Key 1 not found.');
-console.log(tree.search(8) ? 'Key 8 found.' : 'Key 8 not found.');
+console.log(tree.search(1) ? "Key 1 found." : "Key 1 not found.");
+console.log(tree.search(8) ? "Key 8 found." : "Key 8 not found.");
