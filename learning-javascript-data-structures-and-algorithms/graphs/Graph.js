@@ -1,6 +1,6 @@
 // import Dictionary from "../dictionaries-and-hashes/Dictionary.js";
 
-import { breadthFirstSearch } from "../util";
+import { BFS, breadthFirstSearch } from "../util";
 
 class Graph {
   constructor(isDirected = false) {
@@ -65,6 +65,8 @@ graph.addEdge("D", "H");
 graph.addEdge("B", "E");
 graph.addEdge("B", "F");
 graph.addEdge("E", "I");
-console.log(graph.toString());
-const printVertex = (value) => console.log('Visited vertex: ' + value); // {15}
-breadthFirstSearch(graph, myVertices[0], printVertex);
+// console.log(graph.toString());
+// const printVertex = (value) => console.log('Visited vertex: ' + value); // {15}
+// breadthFirstSearch(graph, myVertices[0], printVertex);
+const shortestPathA = BFS(graph, myVertices[0]);
+console.log(shortestPathA)
