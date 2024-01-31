@@ -98,7 +98,9 @@ export default class BinarySearchTree {
     } else {
       return true; // {7}
     }
-  }
+  }remove(key) {
+    this.root = this.removeNode(this.root, key); // {1}
+    }
 }
 
 const tree = new BinarySearchTree();
