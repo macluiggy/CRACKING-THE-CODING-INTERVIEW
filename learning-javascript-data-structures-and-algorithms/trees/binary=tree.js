@@ -132,7 +132,8 @@ export default class BinarySearchTree {
         // {15}
         node = node.left; // {16}
         return node; // {17}
-      } // case 3
+      } 
+      // case 3
       const aux = this.minNode(node.right); // {18}
       node.key = aux.key; // {19}
       node.right = this.removeNode(node.right, aux.key); // {20}
