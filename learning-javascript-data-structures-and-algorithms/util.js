@@ -30,6 +30,9 @@ const BalanceFactor = {
   UNBALANCED_LEFT: 5,
 };
 const swap = (array, a, b) => ([array[a], array[b]] = [array[b], array[a]]);
+function reverseCompare(compareFn) {
+  return (a, b) => compareFn(b, a);
+}
 export {
   defaultToString,
   defaultEquals,
@@ -37,4 +40,5 @@ export {
   defaultCompare,
   BalanceFactor,
   swap,
+  reverseCompare,
 };

@@ -46,7 +46,7 @@ export class MinHeap {
     return this.isEmpty() ? undefined : this.heap[0]; // {1}
   }
   extract() {
-    console.log(this.heap);
+    // console.log(this.heap);
     if (this.isEmpty()) {
       return undefined; // {1}
     }
@@ -95,8 +95,8 @@ export class MinHeap {
 // console.log("Heap is empty: ", heap.isEmpty()); // false
 // console.log("Heap min value: ", heap.findMinimum()); // 1
 // // In the max heap, the first index of the array will store the maximum value, so we c
-const heap = new MinHeap();
-for (let i = 1; i < 10; i++) {
-  heap.insert(i);
-}
-console.log("Extract minimum: ", heap.extract()); // 1
+// const heap = new MinHeap();
+// for (let i = 1; i < 10; i++) {
+//   heap.insert(i);
+// }
+// console.log("Extract minimum: ", heap.extract()); // 1
