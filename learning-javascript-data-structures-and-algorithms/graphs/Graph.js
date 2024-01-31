@@ -1,5 +1,7 @@
 // import Dictionary from "../dictionaries-and-hashes/Dictionary.js";
 
+import { breadthFirstSearch } from "../util";
+
 class Graph {
   constructor(isDirected = false) {
     this.isDirected = isDirected; // {1}
@@ -64,3 +66,5 @@ graph.addEdge("B", "E");
 graph.addEdge("B", "F");
 graph.addEdge("E", "I");
 console.log(graph.toString());
+const printVertex = (value) => console.log('Visited vertex: ' + value); // {15}
+breadthFirstSearch(graph, myVertices[0], printVertex);
