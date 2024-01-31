@@ -30,6 +30,15 @@ export default class BinarySearchTree {
       }
     }
   }
+  inOrderTraverse(callback) {
+    this.inOrderTraverseNode(this.root, callback); // {1}
+  }
+  inOrderTraverseNode(node, callback) {
+    if (node == null) return;
+    this.inOrderTraverseNode(node.left, callback);
+    callback(node.key);
+    this.inOrderTraverseNode(node.right, callback);
+  }
 }
 
 const tree = new BinarySearchTree();
