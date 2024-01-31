@@ -59,6 +59,46 @@ export default class BinarySearchTree {
       callback(node.key); // {3}
     }
   }
+  min() {
+    return this.minNode(this.root); // {1}
+  }
+  minNode(node) {
+    let current = node;
+    while (current != null && current.left != null) {
+      // {2}
+      current = current.left; // {3}
+    }
+    return current; // {4}
+  }
+  max() {
+    return this.maxNode(this.root);
+  }
+  maxNode(node) {
+    let current = node;
+    while (current != null && current.right != null) {
+      // {5}
+      current = current.right;
+    }
+    return current;
+  }
+  search(key) {
+    return this.searchNode(this.root, key); // {1}
+  }
+  searchNode(node, key) {
+    if (node == null) {
+      // {2}
+      return false;
+    }
+    if (this.compareFn(key, node.key) === Compare.LESS_THAN) {
+      // {3}
+      return this.searchNode(node.left, key); // {4}
+    } else if (this.compareFn(key, node.key) === Compare.BIGGER_THAN) {
+      // {5}
+      return this.searchNode(node.right, key); // {6}
+    } else {
+      return true; // {7}
+    }
+  }
 }
 
 const tree = new BinarySearchTree();
@@ -77,7 +117,10 @@ tree.insert(20);
 tree.insert(18);
 tree.insert(25);
 tree.insert(6);
+tree.insert(6);
 const printNode = (value) => console.log(value); // {6}
 // tree.inOrderTraverse(printNode); // {7}
 // tree.preOrderTraverse(printNode);
 tree.postOrderTraverse(printNode);
+console.log(tree.search(1) ? 'Key 1 found.' : 'Key 1 not found.');
+console.log(tree.search(8) ? 'Key 8 found.' : 'Key 8 not found.');
