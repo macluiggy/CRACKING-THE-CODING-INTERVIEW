@@ -57,3 +57,5 @@ tree.insert(20);
 tree.insert(18);
 tree.insert(25);
 tree.insert(6);
+const printNode = (value) => console.log(value); // {6}
+tree.inOrderTraverse(printNode); // {7}
