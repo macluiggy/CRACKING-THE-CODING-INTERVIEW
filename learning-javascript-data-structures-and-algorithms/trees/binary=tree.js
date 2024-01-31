@@ -102,6 +102,43 @@ export default class BinarySearchTree {
   remove(key) {
     this.root = this.removeNode(this.root, key); // {1}
   }
+  removeNode(node, key) {
+    if (node == null) {
+      // {2}
+      return null;
+    }
+    if (this.compareFn(key, node.key) === Compare.LESS_THAN) {
+      // {3}
+      node.left = this.removeNode(node.left, key); // {4}
+      return node; // {5}
+    } else if (this.compareFn(key, node.key) === Compare.BIGGER_THAN) {
+      // {6}
+      node.right = this.removeNode(node.right, key); // {7}
+      return node; // {8}
+    } else {
+      // key is equal to node.item
+      // case 1
+      if (node.left == null && node.right == null) {
+        // {9}
+        node = null; // {10}
+        return node; // {11}
+      }
+      // case 2
+      if (node.left == null) {
+        // {12}
+        node = node.right; // {13}
+        return node; // {14}
+      } else if (node.right == null) {
+        // {15}
+        node = node.left; // {16}
+        return node; // {17}
+      } // case 3
+      const aux = this.minNode(node.right); // {18}
+      node.key = aux.key; // {19}
+      node.right = this.removeNode(node.right, aux.key); // {20}
+      return node; // {21}
+    }
+  }
 }
 
 const tree = new BinarySearchTree();
