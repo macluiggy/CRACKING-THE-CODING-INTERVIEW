@@ -10,4 +10,17 @@ const defaultToString = (item) => {
 };
 const defaultEquals = (a, b) => a === b;
 
-export { defaultToString, defaultEquals };
+const Compare = {
+  LESS_THAN: -1,
+  BIGGER_THAN: 1,
+};
+
+function defaultCompare(a, b) {
+  if (a === b) {
+    // {1}
+    return 0;
+  }
+  return a < b ? Compare.LESS_THAN : Compare.BIGGER_THAN; // {2}
+}
+
+export { defaultToString, defaultEquals, Compare, defaultCompare };
