@@ -15,4 +15,17 @@ function bubbleSort(array, compareFn = defaultCompare) {
   return array;
 }
 
-export default bubbleSort
+export default bubbleSort;
+
+function createNonSortedArray(size) {
+  // 6
+  const array = [];
+  for (let i = size; i > 0; i--) {
+    array.push(i);
+  }
+  return array;
+}
+let array = createNonSortedArray(5); // {7}
+console.log(array.join()); // {8}
+array = bubbleSort(array); // {9}
+console.log(array.join()); //{10}
