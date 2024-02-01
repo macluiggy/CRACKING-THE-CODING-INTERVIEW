@@ -109,6 +109,36 @@ const BFS = (graph, startVertex) => {
     predecessors,
   };
 };
+const depthFirstSearch = (graph, callback) => {
+  // {1}
+  const vertices = graph.getVertices();
+  const adjList = graph.getAdjList();
+  const color = initializeColor(vertices);
+  for (let i = 0; i < vertices.length; i++) {
+    // {2}
+    if (color[vertices[i]] === Colors.WHITE) {
+      // {3}
+      depthFirstSearchVisit(vertices[i], color, adjList, callback); // {4}
+    }
+  }
+};
+const depthFirstSearchVisit = (u, color, adjList, callback) => {
+  color[u] = Colors.GREY; // {5}
+  if (callback) {
+    // {6}
+    callback(u);
+  }
+  const neighbors = adjList.get(u); // {7}
+  for (let i = 0; i < neighbors.length; i++) {
+    // {8}
+    const w = neighbors[i]; // {9}
+    if (color[w] === Colors.WHITE) {
+      // {10}
+      depthFirstSearchVisit(w, color, adjList, callback); // {11}
+    }
+  }
+  color[u] = Colors.BLACK; // {12}
+};
 export {
   defaultToString,
   defaultEquals,
@@ -119,5 +149,6 @@ export {
   reverseCompare,
   Colors,
   initializeColor,
-  BFS
+  BFS,
+  depthFirstSearch,
 };
