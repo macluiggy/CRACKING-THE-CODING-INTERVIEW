@@ -53,8 +53,7 @@ export default class Graph {
 }
 
 
-// depthFirstSearch(graph, printVertex);
-// console.log(DFS(graph));
+
 const graph = new Graph(true); // directed graph
 const myVertices = ["A", "B", "C", "D", "E", "F"];
 for (let i = 0; i < myVertices.length; i++) {

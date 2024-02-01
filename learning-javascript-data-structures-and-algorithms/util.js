@@ -179,6 +179,7 @@ const DFSVisit = (u, color, d, f, p, time, adjList) => {
   color[u] = Colors.BLACK;
   f[u] = ++time.count; // {6}
 };
+const printVertex = (value) => console.log("Visited vertex: " + value); // {15}
 export {
   defaultToString,
   defaultEquals,
@@ -191,5 +192,6 @@ export {
   initializeColor,
   BFS,
   depthFirstSearch,
-  DFS
+  DFS,
+  printVertex,
 };

@@ -2,7 +2,7 @@ import { Stack } from "../stacks/stack.js";
 import { BFS, breadthFirstSearch } from "../util.js";
 import { graph, myVertices } from "./test1.js";
 
-const printVertex = (value) => console.log("Visited vertex: " + value); // {15}
+
 breadthFirstSearch(graph, myVertices[0], printVertex);
 const shortestPathA = BFS(graph, myVertices[0]);
 // console.log(shortestPathA);
