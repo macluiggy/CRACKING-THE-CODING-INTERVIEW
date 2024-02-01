@@ -180,6 +180,15 @@ const DFSVisit = (u, color, d, f, p, time, adjList) => {
   f[u] = ++time.count; // {6}
 };
 const printVertex = (value) => console.log("Visited vertex: " + value); // {15}
+
+function createNonSortedArray(size) {
+  // 6
+  const array = [];
+  for (let i = size; i > 0; i--) {
+    array.push(i);
+  }
+  return array;
+}
 export {
   defaultToString,
   defaultEquals,
@@ -194,4 +203,5 @@ export {
   depthFirstSearch,
   DFS,
   printVertex,
+  createNonSortedArray
 };

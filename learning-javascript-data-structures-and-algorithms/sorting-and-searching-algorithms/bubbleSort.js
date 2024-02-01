@@ -1,4 +1,9 @@
-import { Compare, defaultCompare, swap } from "../util.js";
+import {
+  Compare,
+  createNonSortedArray,
+  defaultCompare,
+  swap,
+} from "../util.js";
 
 function bubbleSort(array, compareFn = defaultCompare) {
   const { length } = array; // {1}
@@ -17,14 +22,6 @@ function bubbleSort(array, compareFn = defaultCompare) {
 
 export default bubbleSort;
 
-function createNonSortedArray(size) {
-  // 6
-  const array = [];
-  for (let i = size; i > 0; i--) {
-    array.push(i);
-  }
-  return array;
-}
 let array = createNonSortedArray(5); // {7}
 console.log(array.join()); // {8}
 array = bubbleSort(array); // {9}
