@@ -1,7 +1,7 @@
 // import Dictionary from "../dictionaries-and-hashes/Dictionary.js";
 
 import { Stack } from "../stacks/stack";
-import { BFS, breadthFirstSearch, depthFirstSearch } from "../util";
+import { BFS, DFS, breadthFirstSearch, depthFirstSearch } from "../util";
 
 class Graph {
   constructor(isDirected = false) {
@@ -91,3 +91,4 @@ const fromVertex = myVertices[0]; // {9}
 // }
 
 depthFirstSearch(graph, printVertex);
+console.log(DFS(graph));
