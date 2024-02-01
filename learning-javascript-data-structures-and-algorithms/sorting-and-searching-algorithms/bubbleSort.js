@@ -9,7 +9,7 @@ function bubbleSort(array, compareFn = defaultCompare) {
   const { length } = array; // {1}
   for (let i = 0; i < length; i++) {
     // {2}
-    for (let j = 0; j < length - 1; j++) {
+    for (let j = 0; j < length - i - 1; j++) {
       // {3}
       if (compareFn(array[j], array[j + 1]) === Compare.BIGGER_THAN) {
         // {4}
