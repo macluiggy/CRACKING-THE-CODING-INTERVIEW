@@ -193,6 +193,7 @@ function lesserOrEquals(a, b, compareFn) {
   const comp = compareFn(a, b);
   return comp === Compare.LESS_THAN || comp === Compare.EQUALS;
 }
+const DOES_NOT_EXIST = -1;
 export {
   defaultToString,
   defaultEquals,
@@ -209,4 +210,5 @@ export {
   printVertex,
   createNonSortedArray,
   lesserOrEquals,
+  DOES_NOT_EXIST,
 };

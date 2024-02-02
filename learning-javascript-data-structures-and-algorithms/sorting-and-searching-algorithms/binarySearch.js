@@ -1,5 +1,5 @@
-import { Compare, defaultCompare } from "../util";
-import quickSort from "./quickSort";
+import { Compare, DOES_NOT_EXIST, defaultCompare, lesserOrEquals } from "../util.js";
+import quickSort from "./quickSort.js";
 
 function binarySearch(array, value, compareFn = defaultCompare) {
   const sortedArray = quickSort(array); // {1}
@@ -21,5 +21,7 @@ function binarySearch(array, value, compareFn = defaultCompare) {
   }
   return DOES_NOT_EXIST; // {12}
 }
+
+console.log(binarySearch([8, 7, 6, 5, 4, 3, 2, 1], 2));
 
 export default binarySearch;
