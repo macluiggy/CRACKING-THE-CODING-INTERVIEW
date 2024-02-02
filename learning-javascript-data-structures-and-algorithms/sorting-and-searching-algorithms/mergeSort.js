@@ -1,4 +1,4 @@
-import { defaultCompare } from "../util";
+import { Compare, defaultCompare } from "../util";
 
 function mergeSort(array, compareFn = defaultCompare) {
   if (array.length > 1) {
