@@ -1,4 +1,5 @@
 import bubbleSort from "./bubbleSort.js";
+import countingSort from "./countingSort.js";
 import insertionSort from "./insertionSort.js";
 import mergeSort from "./mergeSort.js";
 import quickSort from "./quickSort.js";
@@ -10,6 +11,7 @@ const sortFunctions = [
   insertionSort,
   mergeSort,
   quickSort,
+  countingSort,
 ];
 describe("bubbleSort", () => {
   for (let i = 0; i < sortFunctions.length; i++) {
