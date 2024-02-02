@@ -1,7 +1,8 @@
 import bubbleSort from "./bubbleSort.js";
+import insertionSort from "./insertionSort.js";
 import selectionSort from "./selectionSort.js";
 
-const sortFunctions = [bubbleSort, selectionSort];
+const sortFunctions = [bubbleSort, selectionSort, insertionSort];
 describe("bubbleSort", () => {
   for (let i = 0; i < sortFunctions.length; i++) {
     const sortFunction = sortFunctions[i];
