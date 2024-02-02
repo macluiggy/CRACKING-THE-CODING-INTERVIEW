@@ -189,6 +189,10 @@ function createNonSortedArray(size) {
   }
   return array;
 }
+function lesserOrEquals(a, b, compareFn) {
+  const comp = compareFn(a, b);
+  return comp === Compare.LESS_THAN || comp === Compare.EQUALS;
+}
 export {
   defaultToString,
   defaultEquals,
@@ -203,5 +207,6 @@ export {
   depthFirstSearch,
   DFS,
   printVertex,
-  createNonSortedArray
+  createNonSortedArray,
+  lesserOrEquals,
 };
