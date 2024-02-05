@@ -1,5 +1,5 @@
-import quickSort from "../sorting-and-searching-algorithms/quickSort";
-import { Compare, DOES_NOT_EXIST, defaultCompare } from "../util";
+import quickSort from "../sorting-and-searching-algorithms/quickSort.js";
+import { Compare, DOES_NOT_EXIST, defaultCompare } from "../util.js";
 
 function binarySearchRecursive(
   array,
