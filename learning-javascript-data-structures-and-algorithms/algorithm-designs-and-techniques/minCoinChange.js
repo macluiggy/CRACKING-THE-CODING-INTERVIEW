@@ -35,3 +35,4 @@ function minCoinChange(coins, amount) {
 }
 
 console.log(minCoinChange([1, 5, 10, 25], 36));
+console.log(minCoinChange([1, 3, 4], 6));
