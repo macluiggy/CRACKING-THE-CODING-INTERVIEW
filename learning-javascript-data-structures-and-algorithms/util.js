@@ -193,6 +193,10 @@ function lesserOrEquals(a, b, compareFn) {
   const comp = compareFn(a, b);
   return comp === Compare.LESS_THAN || comp === Compare.EQUALS;
 }
+function biggerOrEquals(a, b, compareFn) {
+  const comp = compareFn(a, b);
+  return comp === Compare.BIGGER_THAN || comp === Compare.EQUALS;
+}
 const DOES_NOT_EXIST = -1;
 export {
   defaultToString,
@@ -211,4 +215,5 @@ export {
   createNonSortedArray,
   lesserOrEquals,
   DOES_NOT_EXIST,
+  biggerOrEquals,
 };
