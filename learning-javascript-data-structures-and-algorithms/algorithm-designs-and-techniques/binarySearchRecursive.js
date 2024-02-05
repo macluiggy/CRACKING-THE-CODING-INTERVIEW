@@ -29,3 +29,8 @@ export function binarySearch(array, value, compareFn = defaultCompare) {
   const high = sortedArray.length - 1;
   return binarySearchRecursive(array, value, low, high, compareFn);
 }
+
+const cache = []
+cache[10] = 'hola'
+cache[1] = 'holaa'
+console.log(cache);
