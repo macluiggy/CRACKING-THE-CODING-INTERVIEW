@@ -3,8 +3,7 @@ function searchInsert(nums: number[], target: number): number {
   let high = nums.length - 1;
   while (low <= high) {
     const middle = Math.floor((low + high) / 2);
-    console.log(middle);
-    
+
     const middleElement = nums[middle];
     if (middleElement < target) {
       low = middle + 1;
@@ -14,6 +13,6 @@ function searchInsert(nums: number[], target: number): number {
       return middle;
     }
   }
+  return low; // return the index where the target should be inserted
 }
-
 export default searchInsert;
