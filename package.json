@@ -12,6 +12,7 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "ollama": "^0.4.6"
+    "ollama": "^0.4.6",
+    "ollama-node": "^0.1.27"
   }
 }
