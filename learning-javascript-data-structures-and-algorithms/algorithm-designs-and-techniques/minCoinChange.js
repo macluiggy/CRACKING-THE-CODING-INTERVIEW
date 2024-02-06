@@ -52,3 +52,67 @@ console.log(minCoinChange([1, 5, 10, 25], 36));
 console.log(minCoinChange2([1, 5, 10, 25], 36));
 console.log(minCoinChange([1, 3, 4], 6));
 console.log(minCoinChange2([1, 3, 4], 6));
+
+function solveSudoku(board) {
+  if (!board || board.length === 0) {
+    return;
+  }
+  solve(board);
+}
+
+function solve(board) {
+  const n = board.length;
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n; j++) {
+      if (board[i][j] === '.') {
+        for (let num = 1; num <= 9; num++) {
+          if (isValid(board, i, j, num.toString())) {
+            board[i][j] = num.toString();
+            if (solve(board)) {
+              return true;
+            } else {
+              board[i][j] = '.';
+            }
+          }
+        }
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+function isValid(board, row, col, num) {
+  for (let i = 0; i < 9; i++) {
+    if (board[i][col] === num) {
+      return false;
+    }
+    if (board[row][i] === num) {
+      return false;
+    }
+    if (
+      board[3 * Math.floor(row / 3) + Math.floor(i / 3)][
+        3 * Math.floor(col / 3) + (i % 3)
+      ] === num
+    ) {
+      return false;
+    }
+  }
+  return true;
+}
+
+const board = [
+  ['5', '3', '.', '.', '7', '.', '.', '.', '.'],
+  ['6', '.', '.', '1', '9', '5', '.', '.', '.'],
+  ['.', '9', '8', '.', '.', '.', '.', '6', '.'],
+  ['8', '.', '.', '.', '6', '.', '.', '.', '3'],
+  ['4', '.', '.', '8', '.', '3', '.', '.', '1'],
+  ['7', '.', '.', '.', '2', '.', '.', '.', '6'],
+  ['.', '6', '.', '.', '.', '.', '2', '8', '.'],
+  ['.', '.', '.', '4', '1', '9', '.', '.', '5'],
+  ['.', '.', '.', '.', '8', '.', '.', '7', '9'],
+];
+
+solveSudoku(board);
+
+console.log(board);
