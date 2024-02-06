@@ -51,3 +51,4 @@ function minCoinChange2(coins, amount) {
 console.log(minCoinChange([1, 5, 10, 25], 36));
 console.log(minCoinChange2([1, 5, 10, 25], 36));
 console.log(minCoinChange([1, 3, 4], 6));
+console.log(minCoinChange2([1, 3, 4], 6));
