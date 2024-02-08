@@ -14,17 +14,15 @@ class ParkingSystem {
   }
 
   addCar(carType: number): boolean {
-    let count = 0
+    let count = 0;
     if (carType === CAR_TYPE.BIG) {
-      count = --this.bigCount
+      count = --this.bigCount;
     } else if (carType === CAR_TYPE.MEDIUM) {
-      count = --this.mediumCount
-    } else  [
-      count = --this.smallCount
-    ]
-    console.log(count < 0);
-    
-    return count <= 0
+      count = --this.mediumCount;
+    } else {
+      count = --this.smallCount;
+    }
+    return count >= 0;
   }
 }
 
