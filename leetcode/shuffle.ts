@@ -14,3 +14,5 @@ function shuffle(nums: number[], n: number): number[] {
   return result
 }
 console.log(shuffle([2,5,1,3,4,7],3));
+
+console.log(0^3);
