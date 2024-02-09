@@ -1,6 +1,5 @@
-import ListNode from "../leetcode/linked-lists/listNode";
-
-const addlists = (list1: ListNode, list2: ListNode) => {
+import { ListNode } from "./linked-list";
+const addlists = (list1: ListNode | null, list2: ListNode | null) => {
   let num1Arr = [];
   let current1 = list1;
   while (current1) {}

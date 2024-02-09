@@ -1,19 +1,21 @@
 import { expect, test } from "bun:test";
-import ListNode from "../leetcode/linked-lists/listNode";
+import LinkedList from "./linked-list";
 import addlists from "./sum-list";
 
 test("Sum Lists - Reverse Order", () => {
   // Create linked lists
-  const list1 = new ListNode(7);
-  list1.next = new ListNode(1);
-  list1.next.next = new ListNode(6);
+  const list1 = new LinkedList();
+  list1.add(7);
+  list1.add(1);
+  list1.add(6);
 
-  const list2 = new ListNode(5);
-  list2.next = new ListNode(9);
-  list2.next.next = new ListNode(2);
+  const list2 = new LinkedList();
+  list2.add(5);
+  list2.add(9);
+  list2.add(2);
 
   // Call the function
-  const result = addlists(list1, list2);
+  const result = addlists(list1.head, list2.head);
 
   // Assert the result
   expect(result.value).toBe(2);
