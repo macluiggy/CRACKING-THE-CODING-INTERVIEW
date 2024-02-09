@@ -2,16 +2,6 @@ import { expect, test } from "bun:test";
 import LinkedList from "./linked-list";
 
 test('deleteNode deletes the node from the linked list', () => {
-  // Create a new linked list
-  // let node1 = new LinkedListNode(1);
-  // let node2 = new LinkedListNode(2);
-  // let node3 = new LinkedListNode(3);
-  // let node4 = new LinkedListNode(4);
-  // let node5 = new LinkedListNode(5);
-  // node1.next = node2;
-  // node2.next = node3;
-  // node3.next = node4;
-  // node4.next = node5;
   const list = new LinkedList()
   list.add(1)
   list.add(2)
