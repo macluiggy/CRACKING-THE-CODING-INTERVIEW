@@ -59,7 +59,18 @@ class LinkedList {
     if (index === k) {
       console.log(k + "th to last node is " + head.value);
     }
-    return index
+    return index;
+  }
+
+  deleteNode(n: ListNode | null | undefined): boolean {
+    if (n === null || n!.next === null) {
+      return false; // Failure
+    }
+
+    let next = n!.next;
+    n!.value = next.value;
+    n!.next = next.next;
+    return true;
   }
 }
 
