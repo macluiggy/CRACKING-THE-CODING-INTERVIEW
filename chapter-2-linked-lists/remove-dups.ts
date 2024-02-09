@@ -30,8 +30,22 @@ class LinkedList {
 
   // Method to remove duplicates from the linked list
   removeDuplicates(): void {
-    // Your code goes here
+    let current = this.head;
+    let seen: { [key: number]: boolean } = {};
+
+    if (!current) return;
+
+    seen[current.value] = true;
+
+    while (current.next) {
+      if (seen[current.next.value]) {
+        current.next = current.next.next;
+      } else {
+        seen[current.next.value] = true;
+        current = current.next;
+      }
+    }
   }
 }
 
-export default LinkedList
+export default LinkedList;
