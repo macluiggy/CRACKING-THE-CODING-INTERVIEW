@@ -33,3 +33,5 @@ class LinkedList {
     // Your code goes here
   }
 }
+
+export default LinkedList
