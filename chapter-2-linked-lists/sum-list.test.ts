@@ -19,7 +19,7 @@ test("Sum Lists - Reverse Order", () => {
 
   // Assert the result
   expect(result.value).toBe(2);
-  expect(result.next.value).toBe(1);
-  expect(result.next.next.value).toBe(9);
-  expect(result.next.next.next).toBeNull();
+  expect(result.next!.value).toBe(1);
+  expect(result.next!.next!.value).toBe(9);
+  expect(result!.next!.next!.next).toBeNull();
 });
