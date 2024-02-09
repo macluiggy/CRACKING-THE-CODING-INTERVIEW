@@ -28,6 +28,10 @@ class LinkedList {
     }
   }
 
+  getHead() {
+    return this.head;
+  }
+
   // Method to remove duplicates from the linked list
   removeDuplicates(): void {
     let current = this.head;
@@ -45,6 +49,17 @@ class LinkedList {
         current = current.next;
       }
     }
+  }
+
+  printKthToLast(head: ListNode | null, k: number): number {
+    if (head === null) {
+      return 0;
+    }
+    const index = this.printKthToLast(head.next, k) + 1;
+    if (index === k) {
+      console.log(k + "th to last node is " + head.value);
+    }
+    return index
   }
 }
 

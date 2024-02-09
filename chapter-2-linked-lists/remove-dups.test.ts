@@ -1,5 +1,5 @@
 import { expect, describe, it } from "bun:test";
-import LinkedList from "./remove-dups";
+import LinkedList from "./linked-list";
 
 describe("LinkedList - removeDuplicates", () => {
   it("should remove duplicates from the linked list", () => {
