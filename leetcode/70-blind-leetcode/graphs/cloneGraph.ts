@@ -27,7 +27,7 @@ function clone(node: Node, visited: Map<Node, Node>) {
   }
 
   if (visited.has(node)) {
-    return node;
+    return visited.get(node);
   }
 
   const copy = new Node(node.val);
