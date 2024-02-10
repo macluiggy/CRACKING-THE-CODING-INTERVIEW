@@ -5,9 +5,7 @@ function canFinish(numCourses: number, prerequisites: number[][]): boolean {
   }
   for (let i = 0; i < prerequisites.length; i++) {
     const [crs, pre] = prerequisites[i];
-    if (preMap.get(crs)) {
       preMap.get(crs).push(pre);
-    }
   }
 
   const visitedSet = new Set();
