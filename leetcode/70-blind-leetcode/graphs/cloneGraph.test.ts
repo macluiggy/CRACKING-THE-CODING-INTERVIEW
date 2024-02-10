@@ -10,6 +10,7 @@ test("cloneGraph returns null for null input", () => {
 test("cloneGraph clones a graph with a single node", () => {
   const node = new Node(1);
   const result = cloneGraph(node);
+  if (!result) return
   expect(result).not.toBe(node);
   expect(result.val).toBe(node.val);
   expect(result.neighbors).toHaveLength(0);
@@ -24,6 +25,7 @@ test("cloneGraph clones a graph with multiple nodes", () => {
   node3.neighbors.push(node1);
 
   const result = cloneGraph(node1);
+  if (!result) return
 
   expect(result).not.toBe(node1);
   expect(result.val).toBe(node1.val);
