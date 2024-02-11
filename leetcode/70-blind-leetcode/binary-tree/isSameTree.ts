@@ -13,10 +13,9 @@
  */
 
 import TreeNode from "./TreeNode";
-
 function isSameTree(p: TreeNode | null, q: TreeNode | null): boolean {
-  if (q && !p) return false;
-  if (!q && p) return false;
-  if (q && p && q.val == p.val) return true;
+  if (p == null && q == null) return true;
+  if (q == null || p == null) return false;
+  if (q.val != p.val) return false;
   return isSameTree(p?.left, q?.left) && isSameTree(p?.right, q?.right);
 }
