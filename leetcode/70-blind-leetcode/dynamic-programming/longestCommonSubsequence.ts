@@ -1,18 +1,29 @@
 function longestCommonSubsequence(text1: string, text2: string): number {
-  let dp = new Array(text1.length + 1).fill(
-    new Array(text2.length + 1).fill(0)
-  );
-
-  for (let i = text1.length - 1; i >= 0; i--) {
-    for (let j = text2.length - 1; j >= 0; j--) {
-      if (text1[i] == text2[j]) {
-        dp[i][j] = dp[i + 1][j + 1] + 1;
+  const m = text1.length;
+  const n = text2.length;
+  const l: any = [];
+  for (let i = 0; i <= m; i++) {
+    l[i] = []; // {1}
+    for (let j = 0; j <= n; j++) {
+      l[i][j] = 0; // {2}
+    }
+  }
+  for (let i = 0; i <= m; i++) {
+    for (let j = 0; j <= n; j++) {
+      if (i === 0 || j === 0) {
+        l[i][j] = 0;
+      } else if (text1[i - 1] === text2[j - 1]) {
+        l[i][j] = l[i - 1][j - 1] + 1; // {3}
       } else {
-        dp[i][j] = Math.max(dp[i + 1][j], dp[i][j + 1]);
+        const a = l[i - 1][j];
+        const b = l[i][j - 1];
+        l[i][j] = a > b ? a : b; // {4} max(a,b)
       }
     }
   }
-  return dp[0][0];
+  console.log(l);
+  
+  return l[m][n]; // {5}
 }
 
 const text1 = "abcde",
