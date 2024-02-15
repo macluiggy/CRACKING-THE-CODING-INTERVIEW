@@ -21,4 +21,5 @@ function invertTree(root: TreeNode | null): TreeNode | null {
   root.right = temp;
   invertTree(root.left);
   invertTree(root.right);
+  return root
 }
