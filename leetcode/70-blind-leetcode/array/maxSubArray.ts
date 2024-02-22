@@ -5,14 +5,9 @@ function maxSubArray(nums: number[]): number {
   }
   if (nums.length == 1) return nums[0];
   let max = -Infinity;
-  let sum = nums[0];
-  for (let i = 1; i < nums.length; i++) {
-    const element = nums[i];
-    if (sum >= nums[i]) {
-      sum += nums[i];
-    } else {
-      sum = nums[i];
-    }
+  let sum = 0
+  for (let i = 0; i < nums.length; i++) {
+    sum = Math.max(sum + nums[i], nums[i]);
     max = Math.max(sum, max);
   }
 
