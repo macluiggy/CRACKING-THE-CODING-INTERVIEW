@@ -13,18 +13,18 @@
 import ListNode from "./listNode";
 
 function hasCycle(head: ListNode | null): boolean {
-    let slow: any = head
-    let fast = head?.next
+  let slow: any = head;
+  let fast = head?.next;
 
-    while(fast && fast?.next && fast) {
-      if (fast == slow) return true
-      slow =  slow?.next
-      fast= fast.next.next
-    }
-    return false
-};
+  while (fast && fast?.next && fast) {
+    if (fast == slow) return true;
+    slow = slow?.next;
+    fast = fast.next.next;
+  }
+  return false;
+}
 
-let a = {a:'a'}
-let b = a
-
-console.log(a==b);
+let a = { a: "a" };
+let b = a;
+let c = { a: "a" };
+console.log(a === b, c === a, JSON.stringify(a)=== JSON.stringify(c));
