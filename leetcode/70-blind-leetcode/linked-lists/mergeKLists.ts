@@ -13,5 +13,36 @@
 import ListNode from "./listNode";
 
 function mergeKLists(lists: Array<ListNode | null>): ListNode | null {
-    
-};
+  if (lists.length === 0) return null;
+  while (lists.length > 1) {
+    let mergedLists = [];
+
+    for (let i = 0; i < lists.length; i += 2) {
+      let l1 = lists[i];
+      let l2 = lists[i + 1] ? lists[i + 1] : null;
+      mergedLists.push(mergeTwoLists(l1, l2));
+    }
+    lists = mergedLists;
+  }
+  return lists[0];
+}
+
+function mergeTwoLists(
+  l1: ListNode | null,
+  l2: ListNode | null
+): ListNode | null {
+  const head: ListNode = new ListNode();
+  let curr: ListNode = head;
+  while (l1 && l2) {
+    if (l1.val < l2.val) {
+      curr.next = l1;
+      l1 = l1.next;
+    } else {
+      curr.next = l2;
+      l2 = l2.next;
+    }
+    curr = curr.next;
+  }
+  curr.next = l1 || l2;
+  return head.next;
+}
