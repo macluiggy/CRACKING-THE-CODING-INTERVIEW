@@ -19,16 +19,16 @@ function reorderList(head: ListNode | null): void {
   if (!head) return;
 
   // Step 1: Find the midpoint of the list
-  let slow = head;
+  let slow: ListNode | null = head;
   let fast = head;
   while (fast.next && fast.next.next) {
-    slow = slow.next;
+    slow = slow!.next;
     fast = fast.next.next;
   }
 
   // Step 2: Cut the list into two halves
-  let mid = slow.next;
-  slow.next = null;
+  let mid = slow!.next;
+  slow!.next = null;
 
   // Step 3: Reverse the second half
   let prev = null;
