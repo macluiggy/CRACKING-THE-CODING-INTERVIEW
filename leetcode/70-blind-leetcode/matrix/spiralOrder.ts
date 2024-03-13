@@ -39,16 +39,16 @@ function spiralOrder(matrix: number[][]): number[] {
     }
     top++;
     for (let i = top; i < botton; i++) {
-      ans.push(matrix[i][right-1]);
+      ans.push(matrix[i][right - 1]);
     }
     right--;
     let bool = left < right && top < botton;
     if (!bool) break;
-    for (let i = right-1; i >= left; i--) {
-      ans.push(matrix[botton-1][i]);
+    for (let i = right - 1; i >= left; i--) {
+      ans.push(matrix[botton - 1][i]);
     }
     botton--;
-    for (let i = botton-1; i >= top; i--) {
+    for (let i = botton - 1; i >= top; i--) {
       ans.push(matrix[i][left]);
     }
     left++;
