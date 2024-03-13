@@ -4,39 +4,27 @@ function spiralOrder(matrix: number[][]): number[] {
   let i = 0;
   let length = matrix.length;
   while (matrix.length) {
-    // console.log(matrix);
-    
     if (fromUpRight && i == 0) {
-      ans.push(matrix.shift());
-      // i++;
+      ans.push(...matrix.shift());
       continue;
     }
     if (fromUpRight && i !== length) {
       ans.push(matrix[i].pop());
       i++
+      if (i === length) {
+        fromUpRight = false;
+      }
       continue;
     }
-    if (i === length) {
-      ans.push(matrix.pop()?.reverse());
-      fromUpRight = false
-      length = matrix.length
-      i--
-      continue
-    }
-    if (!fromUpRight && i !==0) {
-      ans.push(matrix[i].shift())
-      i--
-      continue
-    }
-    if (!fromUpRight && i == 0) {
-      ans.push(matrix.shift())
-      i++
-      continue
+    if (!fromUpRight && i >= 0) {
+      ans.push(...matrix.pop()?.reverse());
+      fromUpRight = true;
+      length = matrix.length;
+      i--;
+      continue;
     }
   }
-  console.log(ans);
-  
-  return ans
+  return ans;
 }
 
 console.log(
