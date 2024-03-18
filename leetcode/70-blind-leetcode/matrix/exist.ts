@@ -1,20 +1,20 @@
 function exist(board: string[][], word: string): boolean {
   const [ROWS, COLS] = [board.length, board[0].length];
   let path = new Set();
-
-  const dfs: any = (r, c, i) => {
+  type dfst = (r: number, c: number, i: number) => boolean;
+  const dfs: dfst = (r, c, i) => {
     let pathrc = `${r}-${c}`;
     if (i === word.length) return true;
     if (
       r < 0 ||
       c < 0 ||
-      r > ROWS ||
-      c > COLS ||
+      r >= ROWS || // Changed here
+      c >= COLS || // And here
       word[i] !== board[r][c] ||
       path.has(pathrc)
     )
       return false;
-      path.add(pathrc)
+    path.add(pathrc);
     let res: boolean =
       dfs(r + 1, c, i + 1) ||
       dfs(r - 1, c, i + 1) ||
