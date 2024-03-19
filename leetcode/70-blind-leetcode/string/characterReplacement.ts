@@ -70,4 +70,4 @@ function characterReplacement(s: string, k: number): number {
     return res;
 }
 
-console.log(characterReplacement("ABAB", 2));
+console.log(characterReplacement("AABABBA", 1));
