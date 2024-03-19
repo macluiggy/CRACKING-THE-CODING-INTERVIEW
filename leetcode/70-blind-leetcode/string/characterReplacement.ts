@@ -51,7 +51,23 @@ class Solution {
 }
 
 function characterReplacement(s: string, k: number): number {
-  return new Solution().characterReplacement(s, k);
+  // return new Solution().characterReplacement(s, k);
+  let count: { [key: string]: number } = {};
+    let res = 0;
+    let maxf = 0;
+
+    let l = 0;
+    for (let r = 0; r < s.length; r++) {
+      count[s[r]] = (count[s[r]] || 0) + 1;
+      maxf = Math.max(...Object.values(count));
+      while (r - l + 1 - maxf > k) {
+        count[s[l]]--;
+        l++;
+      }
+
+      res = Math.max(res, r - l + 1);
+    }
+    return res;
 }
 
 console.log(characterReplacement("ABAB", 2));
