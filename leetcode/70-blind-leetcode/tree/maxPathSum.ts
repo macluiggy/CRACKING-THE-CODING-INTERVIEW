@@ -21,6 +21,7 @@ function maxPathSum(root: TreeNode | null): number {
     if (!root) return 0;
     let leftMax = dfs(root.left);
     let rightMax = dfs(root.right);
+    
     leftMax = Math.max(leftMax, 0);
     rightMax = Math.max(rightMax, 0);
 
