@@ -19,10 +19,9 @@ function lowestCommonAncestor(
   p: TreeNode | null,
   q: TreeNode | null
 ): TreeNode | null {
-  let result = root;
   const [minorTree, majorTree] = p!.val >= q!.val ? [q, p] : [p, q];
   const dfs = (root: TreeNode | null) => {
-    if (!root) return 0;
+    if (!root) return root
     const pLessThanOrEqualRoot = minorTree!.val <= root.val;
     const pMoreThanOrEquealRoot = minorTree!.val >= root.val;
     const qMoreThanOrEqualRoot = majorTree!.val >= root.val;
@@ -30,18 +29,17 @@ function lowestCommonAncestor(
     const bothAreLessThanRoot = qLessThanOrEqualRoot && pLessThanOrEqualRoot;
     const bothAreMoreThanRoot = pMoreThanOrEquealRoot && qMoreThanOrEqualRoot;
     if (pLessThanOrEqualRoot && qMoreThanOrEqualRoot) {
-      result = root;
-      return;
+      return root;
     }
     if (bothAreLessThanRoot) {
-      dfs(root.left);
+      return dfs(root.left);
     }
     if (bothAreMoreThanRoot) {
-      dfs(root.right);
+      return dfs(root.right);
     }
+    return root
   };
 
-  dfs(root);
 
-  return result;
+  return dfs(root)
 }
