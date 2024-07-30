@@ -1,36 +1,32 @@
 function threeSum(nums: number[]): number[][] {
-  console.time();
-  let left1 = 0;
-  let left2 = 1;
-  let right = nums.length - 1;
-
-  let ans = [];
-
   nums.sort((a, b) => a - b);
-  let count = 0;
-  while (left1 < left2 || left2 < right) {
-    let [numL1, numL2, numR] = [nums[left1], nums[left2], nums[right]];
-    let sum = numL1 + numL2 + numR;
+  const ans: number[][] = [];
+  const n = nums.length;
 
-    if (sum > 0) {
-      right--;
-    } else if (sum < 0) {
-      left1++;
-      left2++;
-    } else {
-      ans.push([numL1, numL2, numR]);
-      left1++;
-      left2++;
-    }
-    count++;
-    if (count > 20) {
-      break;
+  for (let i = 0; i < n - 2; i++) {
+    if (i > 0 && nums[i] === nums[i - 1]) continue; // Skip duplicates
+
+    let left = i + 1;
+    let right = n - 1;
+
+    while (left < right) {
+      const sum = nums[i] + nums[left] + nums[right];
+
+      if (sum === 0) {
+        ans.push([nums[i], nums[left], nums[right]]);
+        while (left < right && nums[left] === nums[left + 1]) left++; // Skip duplicates
+        while (left < right && nums[right] === nums[right - 1]) right--; // Skip duplicates
+        left++;
+        right--;
+      } else if (sum < 0) {
+        left++;
+      } else {
+        right--;
+      }
     }
   }
-  console.log(count);
-  console.timeEnd();
 
   return ans;
 }
-// threeSum([-1, 0, 1, 2, -1, -4])
+
 console.log(threeSum([-1, 0, 1, 2, -1, -4]));
