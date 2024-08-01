@@ -1,4 +1,4 @@
-function search(nums: number[], target: number): number {
+function search(nums, target){
   let l = 0;
   let r = nums.length - 1;
   while (l <= r) {
@@ -14,7 +14,7 @@ function search(nums: number[], target: number): number {
 
   return -1;
 }
-// function search(nums: number[], target: number): number {
+// function search(nums, target) {
 //   for (let i = 0; i < nums.length; i++) {
 //     if (nums[i] === target) {
 //       return i;
@@ -22,7 +22,7 @@ function search(nums: number[], target: number): number {
 //   }
 //   return -1;
 // }
-const array = Array.from({ length: 200000000 }, (_, index) => index);
-console.time()
-console.log(search(array, 199999999));
-console.timeEnd()
+console.time();
+const array = Array.from({ length: 20000000 }, (_, index) => index);
+console.log(search(array, 19999999));
+console.timeEnd();
