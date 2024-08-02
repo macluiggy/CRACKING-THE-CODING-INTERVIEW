@@ -30,3 +30,19 @@ function hasCycle(head: ListNode | null): boolean {
 
   return false;
 }
+
+function find(arr: any[], target: any) {
+  let l = 0;
+  let r = arr.length - 1;
+  while (l <= r) {
+    if (arr[l] === target) return l;
+    if (arr[r] === target) return r;
+    l++;
+    r--;
+  }
+  return -1;
+}
+
+const arr = [1, 3, 2, 4, 3, 5, 40, 5];
+
+console.log(find(arr, 4));
