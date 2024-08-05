@@ -22,13 +22,12 @@ function isBalanced(root: TreeNode | null): boolean {
 
     let left = dfs(root.left);
     let right = dfs(root.right);
-    if (left == -1 || right === -1) return -1;
 
-    isBalanced = Math.abs(left - right) <= 1;
-    if (!isBalanced) return -1;
+    if (Math.abs(left - right) > 1) isBalanced = false;
 
     return 1 + Math.max(left, right);
   };
 
-  return dfs(root) !== -1;
+  dfs(root);
+  return isBalanced;
 }
