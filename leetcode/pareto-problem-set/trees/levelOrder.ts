@@ -22,18 +22,14 @@ function levelOrder(root: TreeNode | null): number[][] {
     const result: number[][] = [];
 
     while (queue.length > 0) {
-      let currLevel: TreeNode[] = [];
       let subArr: number[] = [];
-      let start = 0;
-      while (start < queue.length) currLevel.push(queue[start++]);
+      let len = queue.length;
 
-      for (let i = 0; i < currLevel.length; i++) {
-        const node = currLevel[i];
-        if (node.val !== undefined) {
-          subArr.push(node.val);
-        }
-        if (node.left) queue.push(node.left);
-        if (node.right) queue.push(node.right);
+      for (let i = 0; i < len; i++) {
+        const node = queue.shift();
+        if (node) subArr.push(node?.val);
+        if (node?.left) queue.push(node.left);
+        if (node?.right) queue.push(node.right);
       }
       result.push(subArr);
     }
