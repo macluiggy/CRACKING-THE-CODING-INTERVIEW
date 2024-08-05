@@ -14,26 +14,24 @@
 
 import TreeNode from "../../70-blind-leetcode/tree/TreeNode";
 
-function levelOrder(root: TreeNode | null): number[][] {
+function rightSideView(root: TreeNode | null): number[] {
   function bfs(root: TreeNode | null) {
     if (!root) return [];
 
     const queue: TreeNode[] = [root];
-    const result: number[][] = [];
+    const result: number[] = [];
 
     while (queue.length > 0) {
-      let subArr: number[] = [];
       let len = queue.length;
+      let right = null
 
       for (let i = 0; i < len; i++) {
         const node = queue.shift();
-        if (node) {
-          subArr.push(node.val); // Ensure node is not undefined
-          if (node.left) queue.push(node.left);
-          if (node.right) queue.push(node.right);
-        }
+        right = node
+        if (node?.left) queue.push(node.left);
+        if (node?.right) queue.push(node.right);
       }
-      result.push(subArr);
+      result.push(right!.val)
     }
 
     return result;
@@ -42,15 +40,11 @@ function levelOrder(root: TreeNode | null): number[][] {
   return bfs(root);
 }
 
-// Create a binary tree
-const root = new TreeNode(3);
-root.left = new TreeNode(9);
-root.right = new TreeNode(20);
-root.right.left = new TreeNode(15);
-root.right.right = new TreeNode(7);
+const root = new TreeNode(1);
+root.left = new TreeNode(2);
+root.right = new TreeNode(3);
+root.left.right = new TreeNode(5);
+root.right.right = new TreeNode(4);
 
-// Call the levelOrder function
-const result = levelOrder(root);
-
-// Print the result
+const result = rightSideView(root);
 console.log(result);
