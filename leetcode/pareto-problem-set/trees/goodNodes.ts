@@ -69,8 +69,8 @@ import TreeNode from "../../70-blind-leetcode/tree/TreeNode";
 //   return dfs(root);
 // }
 const goodNodes = (root: TreeNode | null): number => {
-  let res
-  const dfs = (root: TreeNode | null, max: number) => {
+  let res;
+  const dfs = (root: TreeNode | null, max: number): number => {
     if (!root) return 0;
 
     res = root.val >= max ? 1 : 0;
@@ -79,6 +79,17 @@ const goodNodes = (root: TreeNode | null): number => {
     res += dfs(root.right, max);
 
     return res;
+    // if (root.val >= max)
+    //   return (
+    //     1 +
+    //     dfs(root.left, Math.max(max, root.val)) +
+    //     dfs(root.right, Math.max(max, root.val))
+    //   );
+    // else
+    //   return (
+    //     dfs(root.left, Math.max(max, root.val)) +
+    //     dfs(root.right, Math.max(max, root.val))
+    //   );
   };
 
   return dfs(root, root!.val);
