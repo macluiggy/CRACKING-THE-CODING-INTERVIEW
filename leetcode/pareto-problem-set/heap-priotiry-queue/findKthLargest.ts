@@ -1,3 +1,4 @@
+import { getLargeArray } from "./largeArray";
 import { MaxHeap } from "./MaxHeap";
 
 function findKthLargest(nums: number[], k: number): number {
@@ -8,9 +9,30 @@ function findKthLargest(nums: number[], k: number): number {
   let result = 0;
   while (k) {
     result = maxHeap.extractMax()!;
-    k--
+    k--;
   }
   return result;
 }
 
-console.log(findKthLargest([3,2,1,5,6,4], 2));
+function findKthLargestOn2(nums: number[], k: number): number {
+  for (let i = 0; i < k; i++) {
+    let maxIndex = 0;
+    for (let j = 1; j < nums.length; j++) {
+      if (nums[j] > nums[maxIndex]) {
+        maxIndex = j;
+      }
+    }
+    if (i === k - 1) {
+      return nums[maxIndex];
+    }
+    nums.splice(maxIndex, 1);
+  }
+  return -1; // Esto no debería ocurrir si k es válido
+}
+
+console.time();
+console.log(findKthLargestOn2(getLargeArray(), 63565));
+console.timeEnd();
+console.time();
+console.log(findKthLargest(getLargeArray(), 63565));
+console.timeEnd();
