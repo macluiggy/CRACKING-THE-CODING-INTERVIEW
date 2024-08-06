@@ -12,6 +12,7 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "datastructures-js": "^13.0.0",
     "ollama": "^0.4.6",
     "ollama-node": "^0.1.27"
   }
