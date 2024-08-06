@@ -14,60 +14,75 @@
 
 import TreeNode from "../../70-blind-leetcode/tree/TreeNode";
 
-function goodNodes(root: TreeNode | null): number {
-  const dfs = (root: TreeNode) => {
-    let q: any[] = [root];
-    let c = 1;
+// function goodNodes(root: TreeNode | null): number {
+//   const dfs = (root: TreeNode) => {
+//     let q: any[] = [root];
+//     let c = 1;
 
-    while (q.length) {
-      let l = q.length;
-      for (let i = 0; i < l; i++) {
-        const node = q.shift();
-        if (node?.left) {
-          if (node.father) {
-            let curr = node;
-            let b = true; // Inicializar como true
-            while (curr) {
-              if (curr.val < curr.father.val) {
-                b = false;
-                break; // Usar break en lugar de brk
-              }
-              curr = curr.father;
-            }
-            if (node.left.val >= node.val && b) c++;
-            node.left.father = node; // Asegurarse de asignar siempre
-          } else if (node.left.val >= node.val) {
-            c++;
-          }
-          q.push(node.left);
-        }
-        
-        if (node?.right) {
-          if (node.father) {
-            let curr = node;
-            let b = true; // Inicializar como true
-            while (curr) {
-              if (curr.val < curr.father.val) {
-                b = false;
-                break; // Usar break en lugar de brk
-              }
-              curr = curr.father;
-            }
-            if (node.right.val >= node.val && b) c++;
-            node.right.father = node; // Asegurarse de asignar siempre
-          } else if (node.right.val >= node.val) {
-            c++;
-          }
-          q.push(node.right);
-        }
-      }
-    }
-    return c;
+//     while (q.length) {
+//       let l = q.length;
+//       for (let i = 0; i < l; i++) {
+//         const node = q.shift();
+//         if (node?.left) {
+//           if (node.father) {
+//             let curr = node;
+//             let b = true; // Inicializar como true
+//             while (curr) {
+//               if (curr.val < curr.father.val) {
+//                 b = false;
+//                 break; // Usar break en lugar de brk
+//               }
+//               curr = curr.father;
+//             }
+//             if (node.left.val >= node.val && b) c++;
+//             node.left.father = node; // Asegurarse de asignar siempre
+//           } else if (node.left.val >= node.val) {
+//             c++;
+//           }
+//           q.push(node.left);
+//         }
+
+//         if (node?.right) {
+//           if (node.father) {
+//             let curr = node;
+//             let b = true; // Inicializar como true
+//             while (curr) {
+//               if (curr.val < curr.father.val) {
+//                 b = false;
+//                 break; // Usar break en lugar de brk
+//               }
+//               curr = curr.father;
+//             }
+//             if (node.right.val >= node.val && b) c++;
+//             node.right.father = node; // Asegurarse de asignar siempre
+//           } else if (node.right.val >= node.val) {
+//             c++;
+//           }
+//           q.push(node.right);
+//         }
+//       }
+//     }
+//     return c;
+//   };
+//   if (!root) return root!.val;
+
+//   return dfs(root);
+// }
+const goodNodes = (root: TreeNode | null): number => {
+  let res
+  const dfs = (root: TreeNode | null, max: number) => {
+    if (!root) return 0;
+
+    res = root.val >= max ? 1 : 0;
+    max = Math.max(max, root.val);
+    res += dfs(root.left, max);
+    res += dfs(root.right, max);
+
+    return res;
   };
-  if (!root) return root!.val;
 
-  return dfs(root);
-}
+  return dfs(root, root!.val);
+};
 
 // Existing code...
 
