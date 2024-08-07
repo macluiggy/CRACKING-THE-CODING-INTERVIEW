@@ -4,6 +4,12 @@
 function solve(board: string[][]): void {
   const rows = board.length;
   const cols = board[0].length;
+  const directions = [
+    [-1, 0], // down
+    [1, 0], // up
+    [0, 1], // right
+    [0, -1], // left
+  ];
 
   const dfsAtLeastOneIsOutOfBounds = (
     i: number,
@@ -19,12 +25,14 @@ function solve(board: string[][]): void {
     if (visited.has(visitedString) || board[i][j] == "X") return false;
 
     visited.add(visitedString);
-    return (
-      dfsAtLeastOneIsOutOfBounds(i + 1, j, visited) ||
-      dfsAtLeastOneIsOutOfBounds(i - 1, j, visited) ||
-      dfsAtLeastOneIsOutOfBounds(i, j + 1, visited) ||
-      dfsAtLeastOneIsOutOfBounds(i, j - 1, visited)
-    );
+
+    for (const [dx, dy] of directions) {
+      if (dfsAtLeastOneIsOutOfBounds(i + dx, j + dy, visited)) {
+        return true;
+      }
+    }
+
+    return false;
   };
 
   const VISITED = "X";
@@ -33,11 +41,9 @@ function solve(board: string[][]): void {
       i < 0 || i >= rows || j < 0 || j >= cols || board[i][j] === VISITED;
     if (outOfBoundsOrVisited) return;
     board[i][j] = VISITED;
-
-    dfsConvertAllInIslandIntoX(i + 1, j);
-    dfsConvertAllInIslandIntoX(i - 1, j);
-    dfsConvertAllInIslandIntoX(i, j + 1);
-    dfsConvertAllInIslandIntoX(i, j - 1);
+    for (const [dx, dy] of directions) {
+      dfsConvertAllInIslandIntoX(dx + i, dy + j);
+    }
   };
 
   for (let i = 0; i < rows; i++) {
